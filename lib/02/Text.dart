@@ -6,14 +6,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Text widget',
+      title: 'Text',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Text widget'),
+          title: Text('Text'),
         ),
         body: Center(
           child: Text(
-            'Text widget',
+            'Text',
             // 对齐方式
             textAlign: TextAlign.left,
             // 超出省略号 + 最多一行
