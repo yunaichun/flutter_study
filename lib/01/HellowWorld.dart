@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-// 主入口函数
-void main() => runApp(MyApp());
-
 // 申明类
 class MyApp extends StatelessWidget {
 	// 重写 build 方法
