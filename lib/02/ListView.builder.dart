@@ -8,10 +8,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'ListView',
+      title: 'ListView.builder',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('ListView'),
+          title: Text('ListView.builder'),
         ),
         body: Center(
             // ListView 的子组件用 children

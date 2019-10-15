@@ -4,10 +4,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'ListView-horizontal',
+      title: 'ListView.horizontal',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('ListView-horizontal'),
+          title: Text('ListView.horizontal'),
         ),
         body: Center(
             child: Container(
