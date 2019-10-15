@@ -10,30 +10,32 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 class ListPage extends StatelessWidget {
   @override
    Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Navigator'),
-        ),
-        body: Center(
-          child: Container(
-            child: RaisedButton(
-              child: Text('查看详情'), 
-              onPressed: () {
-                print(11112222);
-                // 通过 Navigator.push 路由跳转
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => new DetailPage())
-                );
-              },
-            ),
+      appBar: AppBar(
+        title: Text('ListPage'),
+      ),
+      body: Center(
+        child: Container(
+          child: RaisedButton(
+            child: Text('查看详情'), 
+            onPressed: () {
+              print(11112222);
+              // 通过 Navigator.push 路由跳转
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) => DetailPage())
+              );
+            },
           ),
         ),
-      );
+      ),
+    );
   }
 }
+
 class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
