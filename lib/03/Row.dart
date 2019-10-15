@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
                   color: Colors.redAccent,
                   child: Text('红色按钮'),
                 ),
-                // Expanded 会被充满
+                // Expanded 代表此区域会被充满
                 Expanded(
                   child: RaisedButton(
                     onPressed: () {},
