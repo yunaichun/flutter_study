@@ -4,14 +4,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Row',
+      title: 'Column',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Row'),
+          title: Text('Column'),
         ),
         body: Center(
           child: Container(
-            // Row 子组件是 children
+            // Column 子组件是 children
             child: Column(
               // 副轴：指的是主轴垂直方向【Column 布局横轴就是水平方向】
               crossAxisAlignment: CrossAxisAlignment.start,
