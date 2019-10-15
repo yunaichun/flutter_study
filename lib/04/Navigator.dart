@@ -23,7 +23,7 @@ class ListPage extends StatelessWidget {
           child: RaisedButton(
             child: Text('查看详情'), 
             onPressed: () {
-              print(11112222);
+              print('列表页按钮被点击了');
               // 通过 Navigator.push 路由跳转
               Navigator.push(context, MaterialPageRoute(
                 builder: (context) => DetailPage())

@@ -43,10 +43,7 @@ class ListPage extends StatelessWidget {
                 title: Text(products[index].title),
                 onTap: () {
                   print('当前点击商品index为 $index');
-                  Navigator.push(context, MaterialPageRoute(
-                    // 传递参数不存在对象的写法
-                    builder: (context) => DetailPage(product: products[index])
-                  ));
+                  _toDetailPage(context, index);
                 },
               );
             },
@@ -54,6 +51,21 @@ class ListPage extends StatelessWidget {
         ),
       ),
     );
+  }
+  _toDetailPage(BuildContext context, index) async {
+    // 通过 async 和 await 接收子页面传递的参数
+    final result = await Navigator.push(context, MaterialPageRoute(
+      // 传递参数不存在对象的写法
+      builder: (context) => DetailPage(product: products[index])
+    ));
+
+    print(result);
+
+    // SnackBar是用户操作后，显示提示信息的一个控件，类似Tost，会自动隐藏。
+    // SnackBar是以Scaffold的showSnackBar方法来进行显示的。
+    Scaffold.of(context).showSnackBar(SnackBar(
+      content: Text(result),
+    ));
   }
 }
 
@@ -74,7 +86,7 @@ class DetailPage extends StatelessWidget {
             child: Text(product.description),
             onPressed: () {
               // 通过 Navigator.pop 路由返回
-              Navigator.pop(context, product);
+              Navigator.pop(context, product.title);
             },
           ),
         ),
