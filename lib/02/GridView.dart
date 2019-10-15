@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget{
               // GridView 子组件是 children
               children: <Widget>[
                 new Image.network(
+                  // 时光网
                   'http://img5.mtime.cn/mt/2018/10/22/104316.77318635_180X260X4.jpg',
                   fit: BoxFit.cover,
                 ),
