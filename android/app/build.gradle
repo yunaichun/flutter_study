@@ -25,7 +25,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
-// 生成 apk 配置
+// Android keystore 配置签名
 def keystorePropertiesFile = rootProject.file("key.properties")
 def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
@@ -41,6 +41,7 @@ android {
         disable 'InvalidPackage'
     }
 
+    // 配置包名、版本
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.example.flutter_study"
@@ -51,7 +52,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
-    // 生成 apk 配置
+    // 配置签名
     // buildTypes {
     //     release {
     //         // TODO: Add your own signing config for the release build.
