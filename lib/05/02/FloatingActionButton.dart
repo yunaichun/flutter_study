@@ -27,7 +27,6 @@ class _FloatingActionButtonWidgetState extends State<FloatingActionButtonWidget>
   // 重写状态
   @override
   void initState() {
-    // 可写可不写
     super.initState();
     list
       ..add(DynamicCom('Home'))

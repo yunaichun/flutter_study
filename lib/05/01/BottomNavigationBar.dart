@@ -36,6 +36,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
   // 重写状态
   @override
   void initState() {
+    super.initState();
     list
       ..add(Home())
       ..add(Email())
