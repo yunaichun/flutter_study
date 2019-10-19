@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import './CustomRoute.dart';
+import './FadeTransition.dart';
+import './ScaleTransition.dart';
+import './RotationTransition.dart';
+
 
 class FirstPage extends StatelessWidget {
   @override
@@ -29,7 +32,15 @@ class FirstPage extends StatelessWidget {
             // ));
 
             // 二、渐隐渐显路由跳转
-            Navigator.of(context).push(CustomRoute(SecondPage()));
+            // Navigator.of(context).push(CustomRouteFadeTransition(SecondPage()));
+
+            // 三、缩放路由跳转
+            // Navigator.of(context).push(CustomRouteScaleTransition(SecondPage()));
+
+            // 四、旋转 + 缩放路由跳转
+            Navigator.of(context).push(CustomRouteRotationTransition(SecondPage()));
+
+            
           },
         ),
       ),
