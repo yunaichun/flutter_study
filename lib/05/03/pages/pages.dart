@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './FadeTransition.dart';
 import './ScaleTransition.dart';
 import './RotationTransition.dart';
+import './SlideTransition.dart';
 
 
 class FirstPage extends StatelessWidget {
@@ -38,9 +39,10 @@ class FirstPage extends StatelessWidget {
             // Navigator.of(context).push(CustomRouteScaleTransition(SecondPage()));
 
             // 四、旋转 + 缩放路由跳转
-            Navigator.of(context).push(CustomRouteRotationTransition(SecondPage()));
+            // Navigator.of(context).push(CustomRouteRotationTransition(SecondPage()));
 
-            
+            // 五、左右滑动路由跳转
+            Navigator.of(context).push(CustomRouteSlideTransition(SecondPage()));
           },
         ),
       ),
