@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import './data.dart';
 
-class SearchBarDelegateWidget extends StatefulWidget {
-  _SearchBarDelegateWidgetState createState() => _SearchBarDelegateWidgetState();
+class SearchDelegateWidget extends StatefulWidget {
+  _SearchDelegateWidgetState createState() => _SearchDelegateWidgetState();
 }
 
-class _SearchBarDelegateWidgetState extends State<SearchBarDelegateWidget> {
+class _SearchDelegateWidgetState extends State<SearchDelegateWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
-        title:Text('SearchBarDelegateWidget'),
+        title:Text('SearchDelegateWidget'),
         // 顶部搜索图标
         actions: <Widget>[
           IconButton(
