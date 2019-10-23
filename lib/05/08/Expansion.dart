@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './pages/ExpansionTile.dart';
+import './pages/ExpansionPanelList.dart';
 
 void main()=>runApp(MyApp());
 
@@ -9,7 +10,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'ExpansionWidget',
       theme: new ThemeData.dark(),
-      home: ExpansionTileWidget()
+      // home: ExpansionTileWidget()
+      home: ExpansionPanelListWidget()
     );
   }
 }

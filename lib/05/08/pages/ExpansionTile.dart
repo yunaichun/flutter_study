@@ -12,15 +12,15 @@ class ExpansionTileWidget extends StatelessWidget {
       body: Center(
         child: ExpansionTile(
           // 未展开的标题
-          title: Text('ExpansionTile'),
+          title: Text('ExpansionTile notOpen'),
           // 左边图标
           leading: Icon(Icons.ac_unit),
           backgroundColor: Colors.white12,
           // 展开后的子元素
           children: <Widget>[
             ListTile(
-              title: Text('ExpansionTile title'),
-              subtitle: Text('ExpansionTile subtitle'),
+              title: Text('ExpansionTile title isOpen'),
+              subtitle: Text('ExpansionTile subtitle isOpen'),
             )
           ],
           // 初始是否展开
