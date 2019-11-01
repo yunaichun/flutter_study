@@ -12,6 +12,8 @@ import './swiper.dart';
 import './navigator.dart';
 /* 广告位组件 */
 import './banner.dart';
+/* 拨打电话组件 */
+import './telephone.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -60,7 +62,8 @@ class _HomeState extends State<Home> {
                children: <Widget>[
                   SwiperWidget(swiperData: swiperData),
                   NavigatorWidget(navigatorData: navigatorData),
-                  BannerWidget(bannerData: bannerData)
+                  BannerWidget(bannerData: bannerData),
+                  TelephoneWidget(telephoneData: telephoneData)
                ],
             );
           } else {
