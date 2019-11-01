@@ -18,7 +18,7 @@ class BottomNavigationBarWidget extends StatefulWidget {
 class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> with AutomaticKeepAliveClientMixin{
   /* 使用混入 with 的条件：
     1、使用的页面必须是StatefulWidget,如果是StatelessWidget是没办法办法使用的。
-    2、其实只有两个前置组件才能保持页面状态：PageView和IndexedStack。
+    2、其实只有两个前置组件才能保持页面状态：TabBarView 和 IndexedStack。
     3、重写wantKeepAlive方法，如果不重写也是实现不了的。 
   */
   @override
@@ -78,7 +78,11 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> w
           });
         },
       ),
-      body: body[currentIndex],
+      // body: body[currentIndex],
+      body: IndexedStack(
+        index: currentIndex,
+        children: body
+      ),
     );
   }
 }
