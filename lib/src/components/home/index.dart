@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
+/* json.decode 方法调用 */
+import 'dart:convert';
+/* 数据格式 */
+import '../../data/home.type.dart';
+/* 数据请求 */
 import '../../service/home.dart';
+/* 轮播图 */
+import './swiper.dart';
+
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -9,13 +17,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  String homeData = '正在获取数据';
+  List<SwiperData> swiperData = [];
   @override
   void initState() {
     super.initState();
-    gethomePageContext().then((res) {
+    gethomePageContextDEV().then((res) {
       setState(() {
-        homeData = res.toString();
+        HomeResponse response = new HomeResponse.fromJson(res);
+        swiperData = response.data.slides;
       });
     });
   }
@@ -26,8 +35,10 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text('首页'),
       ),
-      body: SingleChildScrollView(
-        child: Text(homeData),
+      body: Column(
+        children: <Widget>[
+          SwiperWidget(swiperDataList: swiperData)
+        ],
       ),
     );
   }
