@@ -58,13 +58,17 @@ class _HomeState extends State<Home> {
             BannerData bannerData = response.data.advertesPicture;
             /* 首页电话数据 */
             TelephoneData telephoneData = response.data.shopInfo;
-            return Column(
-               children: <Widget>[
-                  SwiperWidget(swiperData: swiperData),
-                  NavigatorWidget(navigatorData: navigatorData),
-                  BannerWidget(bannerData: bannerData),
-                  TelephoneWidget(telephoneData: telephoneData)
-               ],
+            
+            // 超出边界处理：外层包裹一层 SingleChildScrollView ，但是内部不能有 ListView ， 后续再解决
+            return SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                    SwiperWidget(swiperData: swiperData),
+                    NavigatorWidget(navigatorData: navigatorData),
+                    BannerWidget(bannerData: bannerData),
+                    TelephoneWidget(telephoneData: telephoneData)
+                ],
+              ),
             );
           } else {
             return Center(
