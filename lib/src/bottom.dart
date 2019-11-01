@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-// 引入页面四个部分
+/* 引入页面四个部分 */
 import './components/home/index.dart';
 import './components/category/index.dart';
 import './components/cart/index.dart';

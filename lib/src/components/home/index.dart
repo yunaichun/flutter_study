@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 /* json.decode 方法调用 */
 import 'dart:convert';
 /* 数据格式 */
-import '../../data/home.type.dart';
+import '../../types/home.type.dart';
 /* 数据请求 */
 import '../../service/home.dart';
-/* 轮播图 */
+
+/* 轮播图组件 */
 import './swiper.dart';
 
 

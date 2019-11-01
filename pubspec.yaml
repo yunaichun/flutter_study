@@ -26,7 +26,9 @@ dependencies:
   # http请求：https://github.com/flutterchina/dio
   dio: 3.0.4
   # 轮播图：https://github.com/best-flutter/flutter_swiper
-  flutter_swiper : ^1.1.6
+  flutter_swiper: ^1.1.6
+  # 屏幕适配：https://github.com/OpenFlutter/flutter_screenutil
+  flutter_screenutil: ^0.6.0
 
 dev_dependencies:
   flutter_test:
