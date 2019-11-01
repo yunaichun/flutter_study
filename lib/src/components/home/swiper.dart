@@ -6,8 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SwiperWidget extends StatelessWidget {
   // 传递参数
-  final List swiperDataList;
-  const SwiperWidget({Key key, this.swiperDataList}) : super(key: key);
+  final List swiperData;
+  const SwiperWidget({Key key, this.swiperData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +22,9 @@ class SwiperWidget extends StatelessWidget {
       width: ScreenUtil().setWidth(750),
       child: Swiper(
         itemBuilder: (BuildContext context, int index) {
-          return Image.network(swiperDataList[index].image);
+          return Image.network(swiperData[index].image);
         },
-        itemCount: swiperDataList.length,
+        itemCount: swiperData.length,
         // 分页标点
         pagination: new SwiperPagination(),
         // 自动播放

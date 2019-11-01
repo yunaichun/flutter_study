@@ -8,7 +8,8 @@ import '../../service/home.dart';
 
 /* 轮播图组件 */
 import './swiper.dart';
-
+/* 导航组件 */
+import './navigator.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -45,11 +46,15 @@ class _HomeState extends State<Home> {
           if (snapshot.hasData) {
             HomeResponse response = new HomeResponse.fromJson(snapshot.data);
 
-            // 首页轮播图数据
+            /* 首页轮播图数据 */
             List<SwiperData> swiperData = response.data.slides;
+            /* 首页导航数据 */
+            List<NavigatorData> navigatorData = response.data.category;
+
             return Column(
                children: <Widget>[
-                   SwiperWidget(swiperDataList: swiperData),
+                  SwiperWidget(swiperData: swiperData),
+                  NavigatorWidget(navigatorData: navigatorData)
                ],
             );
           } else {

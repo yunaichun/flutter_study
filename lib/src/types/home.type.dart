@@ -24,18 +24,25 @@ class HomeResponse {
 /* 首页数据 */
 class HomeData {
   final List<SwiperData> slides;
+  final List<NavigatorData> category;
 
   HomeData({
-    this.slides
+    this.slides,
+    this.category
   });
 
   factory HomeData.fromJson(Map<String, dynamic> parsedJson) {
-    // 子属性 - 数组
+    /* 一、子属性 - 数组 - 轮播图 */
     var list1 = parsedJson['slides'] as List;
     List<SwiperData> swiperData = list1.map((i) => SwiperData.fromJson(i)).toList();
 
-    return HomeData(
-      slides: swiperData
+    /* 二、子属性 - 数组 - 顶部导航 */
+    var list2 = parsedJson['category'] as List;
+    List<NavigatorData> navigatorData = list2.map((i) => NavigatorData.fromJson(i)).toList();
+
+    return HomeData( 
+      slides: swiperData,
+      category: navigatorData
     );
   }
 }
@@ -58,6 +65,24 @@ class SwiperData {
       image: parsedJson['image'],
       urlType: parsedJson['urlType'],
       goodsId: parsedJson['goodsId'],
+    );
+  }
+}
+
+/*  二、顶部导航 */
+class NavigatorData {
+  final String mallCategoryName;
+  final String image;
+  
+  NavigatorData({
+    this.mallCategoryName,
+    this.image
+  });
+
+  factory NavigatorData.fromJson(Map<String, dynamic> parseJson) {
+    return NavigatorData(
+      mallCategoryName: parseJson['mallCategoryName'],
+      image: parseJson['image'],
     );
   }
 }
