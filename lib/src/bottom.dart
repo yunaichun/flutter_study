@@ -15,7 +15,21 @@ class BottomNavigationBarWidget extends StatefulWidget {
   _BottomNavigationBarWidgetState createState() => _BottomNavigationBarWidgetState();
 }
 
-class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
+class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> with AutomaticKeepAliveClientMixin{
+  /* 使用混入 with 的条件：
+    1、使用的页面必须是StatefulWidget,如果是StatelessWidget是没办法办法使用的。
+    2、其实只有两个前置组件才能保持页面状态：PageView和IndexedStack。
+    3、重写wantKeepAlive方法，如果不重写也是实现不了的。 
+  */
+  @override
+  bool get wantKeepAlive => true;
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   print('111111111111111111111111111');
+  // }
+
   // 当前 tab 索引
   int currentIndex = 0;
   
@@ -40,7 +54,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
   ];
 
   // 定义页面四个部分
-  final body = [
+  final List<Widget> body = [
     Home(),
     Category(),
     Cart(),
