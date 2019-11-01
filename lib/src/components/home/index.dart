@@ -14,6 +14,8 @@ import './navigator.dart';
 import './banner.dart';
 /* 拨打电话组件 */
 import './telephone.dart';
+/* 推荐商品组件 */
+import './recommand.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -58,7 +60,9 @@ class _HomeState extends State<Home> {
             BannerData bannerData = response.data.advertesPicture;
             /* 首页电话数据 */
             TelephoneData telephoneData = response.data.shopInfo;
-            
+            /* 首页推荐位数据 */
+            List<RecommendData> recommendData = response.data.recommend;
+
             // 超出边界处理：外层包裹一层 SingleChildScrollView ，但是内部不能有 ListView ， 后续再解决
             return SingleChildScrollView(
               child: Column(
@@ -66,7 +70,8 @@ class _HomeState extends State<Home> {
                     SwiperWidget(swiperData: swiperData),
                     NavigatorWidget(navigatorData: navigatorData),
                     BannerWidget(bannerData: bannerData),
-                    TelephoneWidget(telephoneData: telephoneData)
+                    TelephoneWidget(telephoneData: telephoneData),
+                    RecommendWidget(recommendData: recommendData)
                 ],
               ),
             );

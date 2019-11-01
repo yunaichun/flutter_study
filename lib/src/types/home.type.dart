@@ -27,12 +27,13 @@ class HomeData {
   final List<NavigatorData> category;
   final BannerData advertesPicture;
   final TelephoneData shopInfo;
-
+  final List<RecommendData> recommend;
   HomeData({
     this.slides,
     this.category,
     this.advertesPicture,
-    this.shopInfo
+    this.shopInfo,
+    this.recommend
   });
 
   factory HomeData.fromJson(Map<String, dynamic> parsedJson) {
@@ -49,11 +50,16 @@ class HomeData {
 
     /* 四、子属性 - 对象 - 电话 */
     var telephoneData = TelephoneData.fromJson(parsedJson['shopInfo']);
+
+    /* 五、子属性 - 数组 - 商品推荐 */
+    var list3 = parsedJson['recommend'] as List;
+    List<RecommendData> recommendData = list3.map((i) => RecommendData.fromJson(i)).toList();
     return HomeData( 
       slides: swiperData,
       category: navigatorData,
       advertesPicture: bannerData,
-      shopInfo: telephoneData
+      shopInfo: telephoneData,
+      recommend: recommendData
     );
   }
 }
@@ -127,6 +133,30 @@ class TelephoneData {
     return TelephoneData(
       leaderPhone: parsedJson['leaderPhone'],
       leaderImage: parsedJson['leaderImage']
+    );
+  }
+}
+
+/*  五、商品推荐 */
+class RecommendData {
+  final String goodsName;
+  final String image;
+  final int mallPrice;
+  final int price;
+
+  RecommendData({
+    this.goodsName,
+    this.image,
+    this.mallPrice,
+    this.price
+  });
+
+  factory RecommendData.fromJson(Map<String, dynamic> parsedJson) {
+    return RecommendData(
+      goodsName: parsedJson['goodsName'],
+      image: parsedJson['image'],
+      mallPrice: parsedJson['mallPrice'],
+      price: parsedJson['price']
     );
   }
 }
