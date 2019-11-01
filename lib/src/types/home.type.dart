@@ -26,11 +26,13 @@ class HomeData {
   final List<SwiperData> slides;
   final List<NavigatorData> category;
   final BannerData advertesPicture;
+  final TelephoneData shopInfo;
 
   HomeData({
     this.slides,
     this.category,
-    this.advertesPicture
+    this.advertesPicture,
+    this.shopInfo
   });
 
   factory HomeData.fromJson(Map<String, dynamic> parsedJson) {
@@ -44,10 +46,14 @@ class HomeData {
 
     /* 三、子属性 - 对象 - 广告位 */
     var bannerData = BannerData.fromJson(parsedJson['advertesPicture']);
+
+    /* 四、子属性 - 对象 - 电话 */
+    var telephoneData = TelephoneData.fromJson(parsedJson['shopInfo']);
     return HomeData( 
       slides: swiperData,
       category: navigatorData,
-      advertesPicture: bannerData
+      advertesPicture: bannerData,
+      shopInfo: telephoneData
     );
   }
 }
@@ -95,6 +101,7 @@ class NavigatorData {
 /*  三、广告数据 */
 class BannerData {
   final String PICTURE_ADDRESS;
+
   BannerData({
     this.PICTURE_ADDRESS
   });
@@ -102,6 +109,24 @@ class BannerData {
   factory BannerData.fromJson(Map<String, dynamic> parsedJson) {
     return BannerData(
       PICTURE_ADDRESS: parsedJson['PICTURE_ADDRESS']
+    );
+  }
+}
+
+/*  四、电话数据 */
+class TelephoneData {
+  final String leaderPhone;
+  final String leaderImage;
+
+  TelephoneData({
+    this.leaderPhone,
+    this.leaderImage
+  });
+
+  factory TelephoneData.fromJson(Map<String, dynamic> parsedJson) {
+    return TelephoneData(
+      leaderPhone: parsedJson['leaderPhone'],
+      leaderImage: parsedJson['leaderImage']
     );
   }
 }

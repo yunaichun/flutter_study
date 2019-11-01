@@ -54,6 +54,8 @@ class _HomeState extends State<Home> {
             List<NavigatorData> navigatorData = response.data.category;
             /* 首页广告位数据 */
             BannerData bannerData = response.data.advertesPicture;
+            /* 首页电话数据 */
+            TelephoneData telephoneData = response.data.shopInfo;
             return Column(
                children: <Widget>[
                   SwiperWidget(swiperData: swiperData),
