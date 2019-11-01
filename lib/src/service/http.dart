@@ -5,7 +5,7 @@ import 'dart:async';
 // 封装 POST 请求【 formData 可选参数】
 Future post(url, { formData }) async { 
  try {
-    print('首页：开始获取数据');
+    print('post请求：开始获取数据');
     Response response;
     Dio dio = new Dio();
     dio.options.contentType= Headers.formUrlEncodedContentType;
@@ -29,7 +29,7 @@ Future post(url, { formData }) async {
 // 封装 POST 请求【 queryData 可选参数】
 Future get(url, { queryData }) async { 
  try {
-    print('首页：开始获取数据');
+    print('get请求：开始获取数据');
     Response response;
     Dio dio = new Dio();
     dio.options.contentType= Headers.formUrlEncodedContentType;

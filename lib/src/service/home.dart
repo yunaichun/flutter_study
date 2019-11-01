@@ -1,6 +1,6 @@
 import './http.dart';
 // 正式环境
-import '../config/url.dart';
+import '../config/prd.dart';
 // 测试环境
 import '../config/dev.dart';
 

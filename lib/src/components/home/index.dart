@@ -17,17 +17,19 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<SwiperData> swiperData = [];
-  @override
-  void initState() {
-    super.initState();
-    gethomePageContextDEV().then((res) {
-      setState(() {
-        HomeResponse response = new HomeResponse.fromJson(res);
-        swiperData = response.data.slides;
+  /* 方法一：initState 初始化数据
+    List<SwiperData> swiperData = [];
+    @override
+    void initState() {
+      super.initState();
+      gethomePageContextDEV().then((res) {
+        setState(() {
+          HomeResponse response = new HomeResponse.fromJson(res);
+          swiperData = response.data.slides;
+        });
       });
-    });
-  }
+    } 
+  */
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +37,27 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text('首页'),
       ),
-      body: Column(
-        children: <Widget>[
-          SwiperWidget(swiperDataList: swiperData)
-        ],
-      ),
+      /* 方法二：通过 FutureBuilder 初始化数据 */
+      body: FutureBuilder(
+        future: gethomePageContextDEV(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            HomeResponse response = new HomeResponse.fromJson(snapshot.data);
+
+            // 首页轮播图数据
+            List<SwiperData> swiperData = response.data.slides;
+            return Column(
+               children: <Widget>[
+                   SwiperWidget(swiperDataList: swiperData),
+               ],
+            );
+          } else {
+            return Center(
+              child: Text('加载中'),
+            );
+          }
+        },
+      )
     );
   }
 }
