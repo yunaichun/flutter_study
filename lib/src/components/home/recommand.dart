@@ -14,12 +14,14 @@ class RecommendWidget extends StatelessWidget {
       margin: EdgeInsets.only(
         top: 10.0
       ),
-      child: Column(
-        children: <Widget>[
-          _recommandTitle(),
-          _recommedList()
-        ],
-      )
+      child: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            _recommandTitle(),
+            _recommedList()
+          ],
+        )
+      ),
     );
   }
 
@@ -75,21 +77,26 @@ class RecommendWidget extends StatelessWidget {
             left: BorderSide(width: 1.0, color: Colors.black12)
           )
         ),
-        child: Column(
-          children: <Widget>[
-            Image.network(recommendData[index].image),
-            Text('￥${recommendData[index].mallPrice}'),
-            Text(
-              '￥${recommendData[index].price}',
-              // 给文本设置样式
-              style: TextStyle(
-                color: Colors.grey,
-                decoration: TextDecoration.lineThrough
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Image.network(
+                recommendData[index].image,
+                height: ScreenUtil().setHeight(220),
               ),
-            ),
-          ],
-        ),
-      ),
+              Text('￥${recommendData[index].mallPrice}'),
+              Text(
+                '￥${recommendData[index].price}',
+                // 给文本设置样式
+                style: TextStyle(
+                  color: Colors.grey,
+                  decoration: TextDecoration.lineThrough
+                ),
+              ),
+            ],
+          ),
+        )
+      )
     );
   }
 }
