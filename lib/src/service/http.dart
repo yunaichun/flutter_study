@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'dart:async';
-import 'dart:io';
+// import 'dart:io';
 
 // 封装 http 请求【 formData 可选参数】
 Future request(url, { formData }) async { 
@@ -8,7 +8,8 @@ Future request(url, { formData }) async {
     print('首页：开始获取数据');
     Response response;
     Dio dio = new Dio();
-    dio.options.contentType = ContentType.parse("'application/x-www-form-urlencoded") as String;
+    dio.options.contentType= Headers.formUrlEncodedContentType;
+
     if (formData == null) {
       response = await dio.post(url);
     } else {
