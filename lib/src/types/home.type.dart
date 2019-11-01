@@ -25,10 +25,12 @@ class HomeResponse {
 class HomeData {
   final List<SwiperData> slides;
   final List<NavigatorData> category;
+  final BannerData advertesPicture;
 
   HomeData({
     this.slides,
-    this.category
+    this.category,
+    this.advertesPicture
   });
 
   factory HomeData.fromJson(Map<String, dynamic> parsedJson) {
@@ -40,9 +42,12 @@ class HomeData {
     var list2 = parsedJson['category'] as List;
     List<NavigatorData> navigatorData = list2.map((i) => NavigatorData.fromJson(i)).toList();
 
+    /* 三、子属性 - 对象 - 广告位 */
+    var bannerData = BannerData.fromJson(parsedJson['advertesPicture']);
     return HomeData( 
       slides: swiperData,
-      category: navigatorData
+      category: navigatorData,
+      advertesPicture: bannerData
     );
   }
 }
@@ -83,6 +88,20 @@ class NavigatorData {
     return NavigatorData(
       mallCategoryName: parseJson['mallCategoryName'],
       image: parseJson['image'],
+    );
+  }
+}
+
+/*  三、广告数据 */
+class BannerData {
+  final String PICTURE_ADDRESS;
+  BannerData({
+    this.PICTURE_ADDRESS
+  });
+
+  factory BannerData.fromJson(Map<String, dynamic> parsedJson) {
+    return BannerData(
+      PICTURE_ADDRESS: parsedJson['PICTURE_ADDRESS']
     );
   }
 }

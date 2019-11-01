@@ -10,6 +10,8 @@ import '../../service/home.dart';
 import './swiper.dart';
 /* 导航组件 */
 import './navigator.dart';
+/* 广告位组件 */
+import './banner.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -50,11 +52,13 @@ class _HomeState extends State<Home> {
             List<SwiperData> swiperData = response.data.slides;
             /* 首页导航数据 */
             List<NavigatorData> navigatorData = response.data.category;
-
+            /* 首页广告位数据 */
+            BannerData bannerData = response.data.advertesPicture;
             return Column(
                children: <Widget>[
                   SwiperWidget(swiperData: swiperData),
-                  NavigatorWidget(navigatorData: navigatorData)
+                  NavigatorWidget(navigatorData: navigatorData),
+                  BannerWidget(bannerData: bannerData)
                ],
             );
           } else {
