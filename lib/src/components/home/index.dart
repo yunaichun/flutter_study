@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 /* 下拉刷新、上拉加载【https://github.com/xuelongqy/flutter_easyrefresh/】 */
 import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:flutter_easyrefresh/material_footer.dart';
+import 'package:flutter_easyrefresh/material_header.dart';
 
 /* 数据格式 */
 import '../../types/home.type.dart';
@@ -132,6 +134,8 @@ class _HomeState extends State<Home> {
                 print('onRefresh 事件');
                 await _gethomePageBelowConten();
               },
+              header: MaterialHeader(),
+              footer: MaterialFooter(),
             );
           } else {
             return Center(
