@@ -1,0 +1,146 @@
+{
+    "code": "0",
+    "message": "success",
+    "data": [
+        {
+            "name": "青岛啤酒10°500ml",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20190121160757_296.jpg",
+            "mallPrice": 4.8,
+            "goodsId": "8d3d6f79e7a34b75848b13c701ea62b4",
+            "price": 5.28
+        },
+        {
+            "name": "福佳4.9%白啤酒11.7°P330ml",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20190121100327_1855.jpg",
+            "mallPrice": 12.5,
+            "goodsId": "3a79607209a044aeb1926c10bb837a75",
+            "price": 13.75
+        },
+        {
+            "name": "汉德百士菠萝啤500ml",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20190121101250_3231.jpg",
+            "mallPrice": 1.1,
+            "goodsId": "80a28efdb16b4fa29884095ef1399a7e",
+            "price": 1.21
+        },
+        {
+            "name": "智美9%蓝帽啤酒18.9°P330ml",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20190121171258_323.jpg",
+            "mallPrice": 21.9,
+            "goodsId": "6f09c0e733b0499c81503ce457b4cf9f",
+            "price": 24.09
+        },
+        {
+            "name": "林德曼苹果啤酒250ml",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20190121103035_1212.jpg",
+            "mallPrice": 16,
+            "goodsId": "a3b789aa3fa542c6953f578b4a4d00a1",
+            "price": 17.6
+        },
+        {
+            "name": "波士力娇酒蛋黄味21°700ml",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20190122093838_5979.jpg",
+            "mallPrice": 98,
+            "goodsId": "cf304b822ddd4f6aa275c5e54f36abba",
+            "price": 107.8
+        },
+        {
+            "name": "林德曼山莓味啤酒250ml",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20190121102807_7848.jpg",
+            "mallPrice": 16,
+            "goodsId": "e47bf468042a4940a3b8a32d07f64d71",
+            "price": 17.6
+        },
+        {
+            "name": "汪汪队益生菌原味饮料100ml*5",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20191001103540_8831.jpg",
+            "mallPrice": 12.8,
+            "goodsId": "1cbf0a2cdbc54a22b44adfeac119d6fa",
+            "price": 12.8
+        },
+        {
+            "name": "今麦郎冰红茶500ml/绿茶500ml",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20191001155742_9364.jpg",
+            "mallPrice": 2.5,
+            "goodsId": "e3bed6f24f0c408b8ca6c0ef24c2fbce",
+            "price": 2.5
+        },
+        {
+            "name": "瓦伦丁荷拉斯啤酒/瓦伦丁拉格啤酒（500ml听装）",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20191001172241_9472.jpg",
+            "mallPrice": 9.9,
+            "goodsId": "196f1bc9be894362a3d421e29131a3b5",
+            "price": 9.9
+        },
+        {
+            "name": "屈臣氏蒸馏水400ml/屈臣氏矿物质水400ml",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20190928101613_8955.jpg",
+            "mallPrice": 3,
+            "goodsId": "c00a60c3b53f47f7a57558a0aeaa049e",
+            "price": 3
+        },
+        {
+            "name": "翾少爷椒麻粉130g",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20191001151109_8291.jpg",
+            "mallPrice": 9.9,
+            "goodsId": "5bb0d2aab1e54c078b212b884bc60c2a",
+            "price": 9.9
+        },
+        {
+            "name": "唐小朵港式三文鱼丸36g/台式三文鱼丸36g（自由组合）",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20191001103448_5895.jpg",
+            "mallPrice": 5.8,
+            "goodsId": "4a7879ca61aa41b7a676c52b22ff9921",
+            "price": 5.8
+        },
+        {
+            "name": "金惟他水果坚果每日谷物澳洲燕麦片混合燕麦片280g",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20191001170847_8415.jpg",
+            "mallPrice": 13.8,
+            "goodsId": "c0a8abed3aa2466a984e688c36fa4717",
+            "price": 13.8
+        },
+        {
+            "name": "好想你特级健康情枣1618g",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20190905165131_2575.jpg",
+            "mallPrice": 468,
+            "goodsId": "294e4d01a2c64f6d8a85ce922415de1b",
+            "price": 468
+        },
+        {
+            "name": "有友泡凤爪180g",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20190923162929_173.png",
+            "mallPrice": 10.8,
+            "goodsId": "a583a5e084e946ac95bfcda594fb6776",
+            "price": 10.8
+        },
+        {
+            "name": "百草味心情随手礼1232克",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20190905170733_8582.jpg",
+            "mallPrice": 149,
+            "goodsId": "8fb41af261d148ec850c86f43e994b7d",
+            "price": 149
+        },
+        {
+            "name": "沃隆每日坚果盒装A 750g",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20190905171033_2234.jpg",
+            "mallPrice": 149,
+            "goodsId": "11cb1aecba5b4d5f915d3edd2293503c",
+            "price": 149
+        },
+        {
+            "name": "鲜引力红心西柚果干65g/鲜引力樱桃果干65g",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20191001111435_5999.jpg",
+            "mallPrice": 11.8,
+            "goodsId": "48792cd2e1f44385aff7fee6cdaedf86",
+            "price": 11.8
+        },
+        {
+            "name": "炎亭渔夫玉米味深海鱼肠420g",
+            "image": "https://images.baixingliangfan.cn/compressedPic/20190923185847_5455.jpg",
+            "mallPrice": 21.9,
+            "goodsId": "a045af81e30246c9aef1fbc7a691d625",
+            "price": 21.9
+        }
+    ]
+}
