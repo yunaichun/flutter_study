@@ -31,6 +31,8 @@ dependencies:
   flutter_screenutil: ^0.6.0
   # 拨打电话、跳转链接：https://github.com/flutter/plugins/tree/master/packages/url_launcher/url_launcher
   url_launcher: ^5.2.5
+  # 下拉刷新、上拉加载【https://github.com/xuelongqy/flutter_easyrefresh/】
+  flutter_easyrefresh: ^2.0.4
   
 dev_dependencies:
   flutter_test:

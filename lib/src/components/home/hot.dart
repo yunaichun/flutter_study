@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 /* 屏幕适配：https://github.com/OpenFlutter/flutter_screenutil */
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-/* 将 json 对象转换为 dart 对象：json.decode */
-import 'dart:convert';
 /* 数据格式 */
 import '../../types/home.refresh.type.dart';
-/* 数据请求 */
-import '../../service/home.dart';
 
 class HotWidget extends StatefulWidget {
-  HotWidget({Key key}) : super(key: key);
+  /* 注意：
+    1、动态组件的传值通过 widget.hotList 获取
+    2、静态组件的传值可以直接通过定义的变量值获取
+  */
+  final List<HomeRefreshData> hotList;
+  HotWidget({Key key, this.hotList}) : super(key: key);
 
   @override
   _HotWidgetState createState() => _HotWidgetState();
@@ -17,20 +18,6 @@ class HotWidget extends StatefulWidget {
 
 class _HotWidgetState extends State<HotWidget> {
 
-  List<HomeRefreshData> hotList = [];
-
-  @override
-  void initState() { 
-    super.initState();
-    var formData = { 'page': '1' };
-    gethomePageBelowConten(formData: formData).then((res) {
-      setState(() {
-        // 这里要用 json.decode ， 不然会报错； 同时价格类型要定义为 dynamic
-        HomeRefreshResponse response = new HomeRefreshResponse.fromJson(json.decode(res));
-        hotList = response.data;
-      });
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,8 +48,8 @@ class _HotWidgetState extends State<HotWidget> {
 
   // 内容
   Widget _hotContent() {
-    if (hotList.length != 0) {
-      List<Widget> list = hotList.map((item) {
+    if (widget.hotList.length != 0) {
+      List<Widget> list = widget.hotList.map((item) {
         return InkWell(
           onTap: () {
             print('点击了火爆商品');
