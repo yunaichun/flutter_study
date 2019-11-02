@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+/* 屏幕适配：https://github.com/OpenFlutter/flutter_screenutil */
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RecommendWidget extends StatelessWidget {

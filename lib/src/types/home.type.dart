@@ -28,12 +28,25 @@ class HomeData {
   final BannerData advertesPicture;
   final TelephoneData shopInfo;
   final List<RecommendData> recommend;
+  final FloorPicData floor1Pic;
+  final List<FloorData> floor1;
+  final FloorPicData floor2Pic;
+  final List<FloorData> floor2;
+  final FloorPicData floor3Pic;
+  final List<FloorData> floor3;
+
   HomeData({
     this.slides,
     this.category,
     this.advertesPicture,
     this.shopInfo,
-    this.recommend
+    this.recommend,
+    this.floor1Pic,
+    this.floor1,
+    this.floor2Pic,
+    this.floor2,
+    this.floor3Pic,
+    this.floor3,
   });
 
   factory HomeData.fromJson(Map<String, dynamic> parsedJson) {
@@ -54,12 +67,29 @@ class HomeData {
     /* 五、子属性 - 数组 - 商品推荐 */
     var list3 = parsedJson['recommend'] as List;
     List<RecommendData> recommendData = list3.map((i) => RecommendData.fromJson(i)).toList();
+    
+    /* 六、子属性 - 对象 + 数组 - 楼层 */
+    var floor1PicData = FloorPicData.fromJson(parsedJson['floor1Pic']);
+    var list4 = parsedJson['floor1'] as List;
+    List<FloorData> floor1Data = list4.map((i) => FloorData.fromJson(i)).toList();
+    var floor2PicData = FloorPicData.fromJson(parsedJson['floor2Pic']);
+    var list5 = parsedJson['floor2'] as List;
+    List<FloorData> floor2Data = list5.map((i) => FloorData.fromJson(i)).toList();
+    var floor3PicData = FloorPicData.fromJson(parsedJson['floor3Pic']);
+    var list6 = parsedJson['floor3'] as List;
+    List<FloorData> floor3Data = list6.map((i) => FloorData.fromJson(i)).toList();
     return HomeData( 
       slides: swiperData,
       category: navigatorData,
       advertesPicture: bannerData,
       shopInfo: telephoneData,
-      recommend: recommendData
+      recommend: recommendData,
+      floor1Pic: floor1PicData,
+      floor1: floor1Data,
+      floor2Pic: floor2PicData,
+      floor2: floor2Data,
+      floor3Pic: floor3PicData,
+      floor3: floor3Data
     );
   }
 }
@@ -157,6 +187,34 @@ class RecommendData {
       image: parsedJson['image'],
       mallPrice: parsedJson['mallPrice'],
       price: parsedJson['price']
+    );
+  }
+}
+
+/*  六、楼层数据 */
+class FloorPicData {
+  final String PICTURE_ADDRESS;
+
+  FloorPicData({
+    this.PICTURE_ADDRESS
+  });
+
+  factory FloorPicData.fromJson(Map<String, dynamic> parsedJson){
+    return FloorPicData(
+      PICTURE_ADDRESS: parsedJson['PICTURE_ADDRESS']
+    );
+  }
+}
+class FloorData {
+  final String image;
+
+  FloorData({
+    this.image
+  });
+
+  factory FloorData.fromJson(Map<String, dynamic> parsedJson){
+    return FloorData(
+      image: parsedJson['image']
     );
   }
 }

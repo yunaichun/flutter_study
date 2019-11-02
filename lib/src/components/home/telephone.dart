@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+/* 屏幕适配：https://github.com/OpenFlutter/flutter_screenutil */
 import 'package:url_launcher/url_launcher.dart';
+/* 数据类型 */
 import '../../types/home.type.dart';
 
 class TelephoneWidget extends StatelessWidget {

@@ -16,6 +16,8 @@ import './banner.dart';
 import './telephone.dart';
 /* 推荐商品组件 */
 import './recommand.dart';
+/* 楼层组件 */
+import './floor.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -62,6 +64,13 @@ class _HomeState extends State<Home> {
             TelephoneData telephoneData = response.data.shopInfo;
             /* 首页推荐位数据 */
             List<RecommendData> recommendData = response.data.recommend;
+            /* 首页楼层数据 */
+            FloorPicData floor1PicData = response.data.floor1Pic;
+            List<FloorData> floor1Data = response.data.floor1;
+            FloorPicData floor2PicData = response.data.floor2Pic;
+            List<FloorData> floor2Data = response.data.floor2;
+            FloorPicData floor3PicData = response.data.floor3Pic;
+            List<FloorData> floor3Data = response.data.floor3;
 
             // 超出边界处理：外层包裹一层 SingleChildScrollView ，但是内部不能有 ListView ， 后续再解决
             return SingleChildScrollView(
@@ -71,7 +80,10 @@ class _HomeState extends State<Home> {
                     NavigatorWidget(navigatorData: navigatorData),
                     BannerWidget(bannerData: bannerData),
                     TelephoneWidget(telephoneData: telephoneData),
-                    RecommendWidget(recommendData: recommendData)
+                    RecommendWidget(recommendData: recommendData),
+                    FloorWidget(floorPicData: floor1PicData, floorData: floor1Data),
+                    FloorWidget(floorPicData: floor2PicData, floorData: floor2Data),
+                    FloorWidget(floorPicData: floor3PicData, floorData: floor3Data)
                 ],
               ),
             );

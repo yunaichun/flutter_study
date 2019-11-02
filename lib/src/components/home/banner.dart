@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+/* 数据类型 */
 import '../../types/home.type.dart';
 
 class BannerWidget extends StatelessWidget {
