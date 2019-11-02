@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-/* json.decode 方法调用 */
+/* 将 json 对象转换为 dart 对象：json.decode */
 import 'dart:convert';
 /* 数据格式 */
 import '../../types/home.type.dart';
@@ -18,6 +18,8 @@ import './telephone.dart';
 import './recommand.dart';
 /* 楼层组件 */
 import './floor.dart';
+/* 火爆专区组件 */
+import './hot.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -34,6 +36,7 @@ class _HomeState extends State<Home> {
       super.initState();
       gethomePageContextDEV().then((res) {
         setState(() {
+          // 这里不用 json.decode ,会报错
           HomeResponse response = new HomeResponse.fromJson(res);
           swiperData = response.data.slides;
         });
@@ -83,7 +86,8 @@ class _HomeState extends State<Home> {
                     RecommendWidget(recommendData: recommendData),
                     FloorWidget(floorPicData: floor1PicData, floorData: floor1Data),
                     FloorWidget(floorPicData: floor2PicData, floorData: floor2Data),
-                    FloorWidget(floorPicData: floor3PicData, floorData: floor3Data)
+                    FloorWidget(floorPicData: floor3PicData, floorData: floor3Data),
+                    HotWidget()
                 ],
               ),
             );
