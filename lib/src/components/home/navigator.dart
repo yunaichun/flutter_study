@@ -17,6 +17,11 @@ class NavigatorWidget extends StatelessWidget {
       /* 单独设置间距：EdgeInsets.fromLTRB(left, top, right, bottom) */
       padding: EdgeInsets.all(3.0),
       child: GridView.count(
+        /* GridView 禁止滑动
+            GridView，这个和我们的ListView上拉加载是冲突的，我们的组件没有智能到为我们辨认，
+            所以我们可以直接禁用 GridView 的滚动
+        */
+        physics: NeverScrollableScrollPhysics(),
         // 一排 5 个
         crossAxisCount: 5,
         children: navigatorData.map((item) => _gridViewItem(context, item)).toList()
