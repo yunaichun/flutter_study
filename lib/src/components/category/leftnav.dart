@@ -47,7 +47,7 @@ class _LeftnavWidgetState extends State<LeftnavWidget> {
   Widget _NavItem(index) {
     return InkWell(
       onTap: () {
-        Provide.value<CategoryProvider>(context).setCategoryIndext(index);
+        Provide.value<CategoryProvider>(context).clickCategory(index);
       },
       child: Provide<CategoryProvider>(
         builder: (context, child, category) {

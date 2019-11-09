@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+/* 添加 provide 状态管理【https://github.com/google/flutter-provide】 */
+import 'package:provide/provide.dart';
+import 'package:flutter_study/src/provide/category.dart';
+
 /* 屏幕适配：https://github.com/OpenFlutter/flutter_screenutil */
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -41,14 +45,25 @@ class _RightnavWidgetState extends State<RightnavWidget> {
   // 二级分类子项
   Widget _NavItem(index) {
     return InkWell(
-      onTap: () {},
-      child: Container(
-        padding:EdgeInsets.fromLTRB(5.0, 10.0, 5.0, 10.0),
-        child: Text(
-          widget.list[index].mallSubName,
-          style: TextStyle(fontSize:ScreenUtil().setSp(28)),
-        ),
-      ),
+      onTap: () {
+        Provide.value<CategoryProvider>(context).clickSubCategory(index);
+      },
+      child: Provide<CategoryProvider>(
+        builder: (context, child, category) {
+          bool isClick = false;
+          isClick = (index == category.categorySubIndex) ? true : false;
+          return Container(
+            padding: EdgeInsets.fromLTRB(5.0, 10.0, 5.0, 10.0),
+            child: Text(
+              widget.list[index].mallSubName,
+              style: TextStyle(
+                color: isClick ? Colors.pink : Colors.black,
+                fontSize: ScreenUtil().setSp(28)
+              ),
+            ),
+          );
+        },
+      )
     );
   }
 

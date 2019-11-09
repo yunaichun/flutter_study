@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+/* 添加 provide 状态管理【https://github.com/google/flutter-provide】 */
+import 'package:provide/provide.dart';
+import 'package:flutter_study/src/provide/category.dart';
+
 /* 将 json 对象转换为 dart 对象：json.decode */
 import 'dart:convert';
 /* 数据格式 */
@@ -75,7 +79,11 @@ class _CategoryState extends State<Category> {
           LeftnavWidget(list: categoryList),
           Column(
             children: <Widget>[
-              RightnavWidget(list: categoryList[0].bxMallSubDto),
+              Provide<CategoryProvider>(
+                builder: (context, child, category) {
+                  return RightnavWidget(list: categoryList[category.categoryIndex].bxMallSubDto);
+                },
+              ),
               goodsList.length != 0 ? GoodsWidget(list: goodsList) : Text('加载中')
             ],
           )

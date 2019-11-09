@@ -6,13 +6,14 @@ class CategoryProvider with ChangeNotifier {
   int categoryIndex = 0;
   int categorySubIndex = 0;
   
-  setCategoryIndext(int index){
+  clickCategory(int index){
     categoryIndex = index;
+    categorySubIndex = 0;
     notifyListeners();
   }
 
-  setSubCategoryIndext(int index){
-    categoryIndex = index;
+  clickSubCategory(int index){
+    categorySubIndex = index;
     notifyListeners();
   }
 
