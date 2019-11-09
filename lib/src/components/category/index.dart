@@ -54,7 +54,6 @@ class _CategoryState extends State<Category> {
         // 这里需要用 json.decode , 不然会报错，因为定义的字段含有 dynamic 类型
         GoodsResponse response = new GoodsResponse.fromJson(json.decode(res));
         goodsList = response.data;
-        print(goodsList);
       });
     });
   }

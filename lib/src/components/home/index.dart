@@ -112,7 +112,7 @@ class _HomeState extends State<Home> {
               1、Column 布局之外需要套一个 SingleChildScrollView ，防止越界
               2、SingleChildScrollView 内部不能有 ListView
               3、SingleChildScrollView 内部不能有 EasyRefresh ，不然不能下拉刷新
-              4、EasyRefresh 必须用在跟组件上
+              4、EasyRefresh 必须用在根组件上
              */
             return EasyRefresh(
               child: ListView(
