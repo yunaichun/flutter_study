@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-/* 将 json 对象转换为 dart 对象：json.decode */
-import 'dart:convert';
 /* 下拉刷新、上拉加载【https://github.com/xuelongqy/flutter_easyrefresh/】 */
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_easyrefresh/material_footer.dart';
 import 'package:flutter_easyrefresh/material_header.dart';
 
+/* 将 json 对象转换为 dart 对象：json.decode */
+import 'dart:convert';
 /* 数据格式 */
 import '../../types/home.type.dart';
 import '../../types/home.refresh.type.dart';

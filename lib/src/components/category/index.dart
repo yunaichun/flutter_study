@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+/* 将 json 对象转换为 dart 对象：json.decode */
+import 'dart:convert';
+/* 数据格式 */
+import '../../types/category.type.dart';
 /* 数据请求 */
 import '../../service/category.dart';
 
@@ -19,7 +23,9 @@ class _CategoryState extends State<Category> {
   // 获取分类数据
   _getCategoryDEV() {
     getCategoryDEV().then((res) {
-      print(res);
+      // 这里不用 json.decode ,会报错
+      CategoryResponse response = CategoryResponse.fromJson(res);
+      print(response.data);
       setState(() {
         // 这里不用 json.decode ,会报错
         // HomeResponse response = new HomeResponse.fromJson(res);

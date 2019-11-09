@@ -1,5 +1,4 @@
 /* 首页下拉响应 */
-import 'dart:ffi';
 
 class HomeRefreshResponse {
   final String code;
