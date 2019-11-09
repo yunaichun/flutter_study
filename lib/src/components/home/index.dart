@@ -57,7 +57,7 @@ class _HomeState extends State<Home> {
   _gethomePageContextDEV() {
     gethomePageContextDEV().then((res) {
       setState(() {
-        // 这里不用 json.decode ,会报错
+        // 这里不用 json.decode , 不然会报错, 因为定义的字段不含有 dynamic 类型
         // HomeResponse response = new HomeResponse.fromJson(res);
       });
     });
@@ -68,6 +68,7 @@ class _HomeState extends State<Home> {
     var formData = { 'page': '1' };
     gethomePageBelowConten(formData: formData).then((res) {
       setState(() {
+        // 这里需要用 json.decode , 不然会报错，因为定义的字段含有 dynamic 类型
         HomeRefreshResponse response = new HomeRefreshResponse.fromJson(json.decode(res));
         hotList.addAll(response.data);
         page++;
@@ -86,6 +87,7 @@ class _HomeState extends State<Home> {
         future: gethomePageContextDEV(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
+            // 这里不用 json.decode , 不然会报错, 因为定义的字段不含有 dynamic 类型
             HomeResponse response = new HomeResponse.fromJson(snapshot.data);
 
             /* 首页轮播图数据 */
