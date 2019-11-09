@@ -31,10 +31,10 @@ import 'package:flutter/material.dart';
 // import 'demo/05/11/CupertinoPageRoute.dart';
 // import 'demo/05/12/Tooltip.dart';
 // import 'demo/05/13/Draggable.dart';
-import 'demo/07/provide.dart';
+// import 'demo/07/provide.dart';
 
-/** 下面是商城项目的入口文件 */
-// import 'src/index.dart';
+/* 下面是商城项目的入口文件 */
+import 'src/index.dart';
 
 // 主入口函数
 void main() => runApp(MyApp());
