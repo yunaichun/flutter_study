@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+/* 添加 provide 状态管理【https://github.com/google/flutter-provide】 */
+import 'package:provide/provide.dart';
+import 'package:flutter_study/src/provide/category.dart';
+
 /* 屏幕适配：https://github.com/OpenFlutter/flutter_screenutil */
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,8 +12,7 @@ import '../../types/goods.type.dart';
 
 
 class GoodsWidget extends StatefulWidget {
-  final List<GoodsData> list;
-  GoodsWidget({Key key, this.list}) : super(key: key);
+  GoodsWidget({Key key}) : super(key: key);
 
   @override
   _GoodsWidgetState createState() => _GoodsWidgetState();
@@ -21,16 +24,23 @@ class _GoodsWidgetState extends State<GoodsWidget> {
     return Container(
       width: ScreenUtil().setWidth(570) ,
       height: ScreenUtil().setHeight(1000),
-      child: ListView.builder(
-        itemCount: widget.list.length,
-        itemBuilder: (context, index) {
-          return _GoodItem(index);
-        },
-      )
+      child: Provide<CategoryProvider>(
+        builder: (context, child, category) {
+          if (category.goodsList.length != 0) {
+            return ListView.builder(
+              itemCount: category.goodsList.length,
+              itemBuilder: (context, index) {
+                return _GoodItem(category.goodsList, index);
+              },
+            );
+          } else {
+            return Text('加载中');
+          }
+        })
     );
   }
 
-  Widget _GoodItem(int index) {
+  Widget _GoodItem(List<GoodsData> list, int index) {
     return InkWell(
       onTap: () {},
       child: Container(
@@ -43,11 +53,11 @@ class _GoodsWidgetState extends State<GoodsWidget> {
         ),
         child: Row(
           children: <Widget>[
-            _imageWidget(index),
+            _imageWidget(list, index),
             Column(
               children: <Widget>[
-                _goodsName(index),
-                _goodsPrice(index)
+                _goodsName(list, index),
+                _goodsPrice(list, index)
               ],
             )
           ],
@@ -56,19 +66,19 @@ class _GoodsWidgetState extends State<GoodsWidget> {
     );
   }
 
-  Widget _imageWidget(int index) {
+  Widget _imageWidget(List<GoodsData> list, int index) {
     return Container(
       width: ScreenUtil().setWidth(200),
-      child: Image.network(widget.list[index].image),
+      child: Image.network(list[index].image),
     );
   }
 
-  Widget _goodsName(int index) {
+  Widget _goodsName(List<GoodsData> list, int index) {
     return Container(
       padding: EdgeInsets.all(5.0),
       width: ScreenUtil().setWidth(370),
       child: Text(
-        widget.list[index].goodsName,
+        list[index].goodsName,
         // 最大两行，超出省略号
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
@@ -77,7 +87,7 @@ class _GoodsWidgetState extends State<GoodsWidget> {
     );
   }
 
-  Widget _goodsPrice(int index) {
+  Widget _goodsPrice(List<GoodsData> list, int index) {
     return Container(
       margin: EdgeInsets.only(top:20.0),
       width: ScreenUtil().setWidth(370),
@@ -86,7 +96,7 @@ class _GoodsWidgetState extends State<GoodsWidget> {
           Padding(
             padding: EdgeInsets.only(left: 5.0, right: 20.0),
             child:Text(
-              '价格:￥${widget.list[index].presentPrice}',
+              '价格:￥${list[index].presentPrice}',
               style: TextStyle(
                 color:Colors.pink,
                 fontSize:ScreenUtil().setSp(30)
@@ -94,7 +104,7 @@ class _GoodsWidgetState extends State<GoodsWidget> {
             ),
           ),
           Text(
-            '￥${widget.list[index].oriPrice}',
+            '￥${list[index].oriPrice}',
             style: TextStyle(
               color: Colors.black26,
               // 水平下划线
