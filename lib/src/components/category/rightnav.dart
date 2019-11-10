@@ -85,6 +85,8 @@ class _RightnavWidgetState extends State<RightnavWidget> {
         var categorySubId = widget.list[index].mallSubId;
         // 可选参数调用：一级分类在当前 index 可以获取【就不用从 provide 里面获取了】，二级分类从当前点击 index 获取
         _getMallGoods(categoryId: categoryId, categorySubId: categorySubId);
+        /* 三、重置分页 */
+        Provide.value<CategoryProvider>(context).resetPage();
       },
       child: Provide<CategoryProvider>(
         builder: (context, child, category) {

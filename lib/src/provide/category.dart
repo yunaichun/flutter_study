@@ -38,4 +38,9 @@ class CategoryProvider with ChangeNotifier {
     page++;
     notifyListeners();
   }
+
+  resetPage() {
+    page = 1;
+    notifyListeners();
+  }
 }

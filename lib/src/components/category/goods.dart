@@ -12,6 +12,9 @@ import 'package:flutter_study/src/provide/category.dart';
 /* 屏幕适配：https://github.com/OpenFlutter/flutter_screenutil */
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+/* toast友好提示 【https://github.com/PonnamKarthik/FlutterToast】 */
+import 'package:fluttertoast/fluttertoast.dart';
+
 /* 将 json 对象转换为 dart 对象：json.decode */
 import 'dart:convert';
 /* 数据格式 */
@@ -30,6 +33,8 @@ class GoodsWidget extends StatefulWidget {
 
 class _GoodsWidgetState extends State<GoodsWidget> {
 
+  var scrollController = new ScrollController();
+
   // 获取商品数据【使用可选参数】
   _getMallGoods() {
     var page = Provide.value<CategoryProvider>(context).page;
@@ -45,12 +50,24 @@ class _GoodsWidgetState extends State<GoodsWidget> {
     getMallGoods(formData: formData).then((res) {
       // 这里需要用 json.decode , 不然会报错，因为定义的字段含有 dynamic 类型
       GoodsResponse response = new GoodsResponse.fromJson(json.decode(res));
-      /* 一、添加商品 */
-      List<GoodsData> goodsList = Provide.value<CategoryProvider>(context).goodsList;
-      goodsList.addAll(response.data);
-      Provide.value<CategoryProvider>(context).setGoodsList(goodsList);
-      /* 二、更改 page */
-      Provide.value<CategoryProvider>(context).addPage();
+      if (response.data.length != 0) {
+        /* 一、添加商品 */
+        List<GoodsData> goodsList = Provide.value<CategoryProvider>(context).goodsList;
+        goodsList.addAll(response.data);
+        Provide.value<CategoryProvider>(context).setGoodsList(goodsList);
+        /* 二、更改 page */
+        Provide.value<CategoryProvider>(context).addPage();
+      } else {
+        Fluttertoast.showToast(
+          msg: "已经到底了",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIos: 1,
+          backgroundColor: Colors.pink,
+          textColor: Colors.white,
+          fontSize: 16.0
+        );
+      }
     });
   }
 
@@ -61,9 +78,20 @@ class _GoodsWidgetState extends State<GoodsWidget> {
       height: ScreenUtil().setHeight(1000),
       child: Provide<CategoryProvider>(
         builder: (context, child, category) {
+          // 每次切换分类的时候滚动条到最顶部
+          try{
+            if(Provide.value<CategoryProvider>(context).page == 1){
+              scrollController.jumpTo(0.0);
+            }
+          }catch(e){
+            print('进入页面第一次初始化：${e}');
+          }
+
           if (category.goodsList.length != 0) {
             return EasyRefresh(
               child: ListView.builder(
+                // 每次切换分类的时候滚动条到最顶部
+                controller: scrollController,
                 itemCount: category.goodsList.length,
                 itemBuilder: (context, index) {
                   return _GoodItem(category.goodsList, index);

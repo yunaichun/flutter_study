@@ -80,6 +80,8 @@ class _LeftnavWidgetState extends State<LeftnavWidget> {
         var categoryId = widget.list[index].mallCategoryId;
         // 可选参数调用：一级分类从当前点击 index 获取，二级分类查询全部默认不传
         _getMallGoods(categoryId: categoryId);
+        /* 三、重置分页 */
+        Provide.value<CategoryProvider>(context).resetPage();
       },
       child: Provide<CategoryProvider>(
         builder: (context, child, category) {

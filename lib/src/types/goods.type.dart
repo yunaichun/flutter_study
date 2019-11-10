@@ -13,6 +13,7 @@ class GoodsResponse {
     // 子属性 - 数组
     var list = parsedJson['data'] as List;
     // 醉了 - 后台没有数据返回的是 null, 而不是空数组 []
+    // 保证 data 最后一定为数组类型
     if (list == null) {
       list = [];
     }
