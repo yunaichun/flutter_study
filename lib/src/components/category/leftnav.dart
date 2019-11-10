@@ -78,10 +78,8 @@ class _LeftnavWidgetState extends State<LeftnavWidget> {
         Provide.value<CategoryProvider>(context).clickCategory(index);
         /* 二、改变商品列表 */
         var categoryId = widget.list[index].mallCategoryId;
-        var categorySubIndex = Provide.value<CategoryProvider>(context).categorySubIndex;
-        var categorySubId = widget.list[index].bxMallSubDto[categorySubIndex].mallSubId;
-        // 可选参数调用：一级分类从当前点击 index 获取，二级分类从 provide 里面获取
-        _getMallGoods(categoryId: categoryId, categorySubId: categorySubId);
+        // 可选参数调用：一级分类从当前点击 index 获取，二级分类查询全部默认不传
+        _getMallGoods(categoryId: categoryId);
       },
       child: Provide<CategoryProvider>(
         builder: (context, child, category) {

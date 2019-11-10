@@ -61,9 +61,19 @@ class _CategoryState extends State<Category> {
             children: <Widget>[
               Provide<CategoryProvider>(
                 builder: (context, child, category) {
+                  /* 每个二级分类前都加入 "全部" */
+                  List<SubCategoryData> list = [];
+                  SubCategoryData all = new SubCategoryData(
+                    mallCategoryId: categoryList[category.categoryIndex].mallCategoryId,
+                    mallSubId: '',
+                    mallSubName: '全部',
+                    comments: 'null',
+                  );
+                  list = [all];
+                  list.addAll(categoryList[category.categoryIndex].bxMallSubDto);
                   /* 传入二级分类列表，index 在内部控制 */
                   return RightnavWidget(
-                    list: categoryList[category.categoryIndex].bxMallSubDto,
+                    list: list,
                   );
                 },
               ),
