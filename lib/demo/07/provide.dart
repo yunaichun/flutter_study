@@ -62,7 +62,7 @@ class MyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child:RaisedButton(
+      child: RaisedButton(
         onPressed: () {
           // 使用三：获取 Provide 设置的方法和字段名
           Provide.value<Counter>(context).increment();
