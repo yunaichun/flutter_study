@@ -37,6 +37,7 @@ class _CategoryState extends State<Category> {
         // 这里不用 json.decode , 不然会报错, 因为定义的字段不含有 dynamic 类型
         CategoryResponse response = new CategoryResponse.fromJson(res);
         categoryList = response.data;
+        Provide.value<CategoryProvider>(context).setCategoryList(categoryList);
       });
     });
   }
