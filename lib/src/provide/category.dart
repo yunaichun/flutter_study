@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../types/goods.type.dart';
 
 class CategoryProvider with ChangeNotifier {
-
+  
   int categoryIndex = 0;
   int categorySubIndex = 0;
   List<GoodsData> goodsList = [];
@@ -23,6 +23,7 @@ class CategoryProvider with ChangeNotifier {
 
   setGoodsList(List<GoodsData> list) {
     goodsList = list;
+    notifyListeners();
   }
   
 }

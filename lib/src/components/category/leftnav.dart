@@ -7,8 +7,13 @@ import 'package:flutter_study/src/provide/category.dart';
 /* 屏幕适配：https://github.com/OpenFlutter/flutter_screenutil */
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+/* 将 json 对象转换为 dart 对象：json.decode */
+import 'dart:convert';
 /* 数据格式 */
 import '../../types/category.type.dart';
+import '../../types/goods.type.dart';
+/* 数据请求 */
+import '../../service/category.dart';
 
 class LeftnavWidget extends StatefulWidget {
   // 注意这里要定义为 final 
@@ -20,6 +25,28 @@ class LeftnavWidget extends StatefulWidget {
 }
 
 class _LeftnavWidgetState extends State<LeftnavWidget> {
+
+  @override
+  void initState() {
+    super.initState();
+    _getMallGoods();
+  }
+
+  // 获取商品数据【使用可选参数】
+  _getMallGoods({ String categoryId, String categorySubId }) {
+    var formData = { 
+      'categoryId': categoryId == null ? widget.list[0].mallCategoryId : categoryId,
+      'categorySubId': categorySubId == null ? '' : categorySubId,
+      'page': 1
+    };
+    getMallGoods(formData: formData).then((res) {
+      // 这里需要用 json.decode , 不然会报错，因为定义的字段含有 dynamic 类型
+      GoodsResponse response = new GoodsResponse.fromJson(json.decode(res));
+      List<GoodsData> goodsList = response.data;
+      Provide.value<CategoryProvider>(context).setGoodsList(goodsList);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // 路由切换了，这里必须要再次初始化一次
@@ -47,7 +74,14 @@ class _LeftnavWidgetState extends State<LeftnavWidget> {
   Widget _NavItem(index) {
     return InkWell(
       onTap: () {
+        /* 一、改变一级分类 index */
         Provide.value<CategoryProvider>(context).clickCategory(index);
+        /* 二、改变商品列表 */
+        var categoryId = widget.list[index].mallCategoryId;
+        var categorySubIndex = Provide.value<CategoryProvider>(context).categorySubIndex;
+        var categorySubId = widget.list[index].bxMallSubDto[categorySubIndex].mallSubId;
+        // 可选参数调用：一级分类从当前点击 index 获取，二级分类从 provide 里面获取
+        _getMallGoods(categoryId: categoryId, categorySubId: categorySubId);
       },
       child: Provide<CategoryProvider>(
         builder: (context, child, category) {

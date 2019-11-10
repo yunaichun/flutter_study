@@ -12,6 +12,10 @@ class GoodsResponse {
   factory GoodsResponse.fromJson(Map<String, dynamic> parsedJson) {
     // 子属性 - 数组
     var list = parsedJson['data'] as List;
+    // 醉了 - 后台没有数据返回的是 null, 而不是空数组 []
+    if (list == null) {
+      list = [];
+    }
     List<GoodsData> data = list.map((i) => GoodsData.fromJson(i)).toList();
     return GoodsResponse(
       code: parsedJson['code'],

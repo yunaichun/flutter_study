@@ -4,11 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:provide/provide.dart';
 import 'package:flutter_study/src/provide/category.dart';
 
-/* 将 json 对象转换为 dart 对象：json.decode */
-import 'dart:convert';
 /* 数据格式 */
 import '../../types/category.type.dart';
-import '../../types/goods.type.dart';
 /* 数据请求 */
 import '../../service/category.dart';
 
@@ -26,13 +23,11 @@ class Category extends StatefulWidget {
 
 class _CategoryState extends State<Category> {
   List<CategoryData> categoryList = [];
-  // List<GoodsData> goodsList = [];
 
   @override
   void initState() {
     super.initState();
     _getCategoryDEV();
-    // _getMallGoods();
   }
 
   // 获取分类数据
@@ -45,22 +40,6 @@ class _CategoryState extends State<Category> {
       });
     });
   }
-
-  // 获取商品数据
-  // _getMallGoods() {
-  //   var formData = { 
-  //     'categoryId': '2c9f6c946cd22d7b016cd732f0f6002f',
-  //     'categorySubId': '',
-  //     'page': 1 
-  //   };
-  //   getMallGoods(formData: formData).then((res) {
-  //     setState(() {
-  //       // 这里需要用 json.decode , 不然会报错，因为定义的字段含有 dynamic 类型
-  //       GoodsResponse response = new GoodsResponse.fromJson(json.decode(res));
-  //       goodsList = response.data;
-  //     });
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -76,17 +55,19 @@ class _CategoryState extends State<Category> {
     if (categoryList.length != 0) {
       return Row(
         children: <Widget>[
+          /* 传入一级分类列表，index 在内部控制 */
           LeftnavWidget(list: categoryList),
           Column(
             children: <Widget>[
               Provide<CategoryProvider>(
                 builder: (context, child, category) {
+                  /* 传入二级分类列表，index 在内部控制 */
                   return RightnavWidget(
                     list: categoryList[category.categoryIndex].bxMallSubDto,
-                    categorySubIndex: category.categorySubIndex
                   );
                 },
               ),
+              /* 什么也不传入，内部通过 provide 状态控制 */
               GoodsWidget()
             ],
           )

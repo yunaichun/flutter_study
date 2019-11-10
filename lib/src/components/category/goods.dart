@@ -19,6 +19,7 @@ class GoodsWidget extends StatefulWidget {
 }
 
 class _GoodsWidgetState extends State<GoodsWidget> {
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,7 +35,7 @@ class _GoodsWidgetState extends State<GoodsWidget> {
               },
             );
           } else {
-            return Text('加载中');
+            return Text('暂无数据');
           }
         })
     );

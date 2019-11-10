@@ -17,8 +17,7 @@ import '../../service/category.dart';
 
 class RightnavWidget extends StatefulWidget {
   final List<SubCategoryData> list;
-  final int categorySubIndex;
-  RightnavWidget({Key key, this.list, this.categorySubIndex}) : super(key: key);
+  RightnavWidget({Key key, this.list}) : super(key: key);
 
   @override
   _RightnavWidgetState createState() => _RightnavWidgetState();
@@ -29,26 +28,26 @@ class _RightnavWidgetState extends State<RightnavWidget> {
   @override
   void initState() { 
     super.initState();
-    _getMallGoods();
   }
 
-  // 获取商品数据
-  _getMallGoods() {
-    // 商品详情里面存储的有一级分类和二级分类的 ID
-    var categorySubIndex = widget.categorySubIndex;
-    print('打印的categorySubIndex $categorySubIndex');
+  // 获取商品数据【使用可选参数】
+  _getMallGoods({ String categoryId, String categorySubId }) {
+    /* 很奇怪的一个现象：点击子类的时候会调用2次
+      其中一次是 categoryId 和 categorySubId 都不传递任何参数
+    */
+    if(categoryId == null && categorySubId == null) {
+      return;
+    }
     var formData = { 
-      'categoryId': widget.list[categorySubIndex].mallCategoryId,
-      'categorySubId': widget.list[categorySubIndex].mallSubId,
+      'categoryId': categoryId == null ? '' : categoryId,
+      'categorySubId': categorySubId == null ? '' : categorySubId,
       'page': 1
     };
     getMallGoods(formData: formData).then((res) {
-      setState(() {
-        // 这里需要用 json.decode , 不然会报错，因为定义的字段含有 dynamic 类型
-        GoodsResponse response = new GoodsResponse.fromJson(json.decode(res));
-        List<GoodsData> goodsList = response.data;
-        Provide.value<CategoryProvider>(context).setGoodsList(goodsList);
-      });
+      // 这里需要用 json.decode , 不然会报错，因为定义的字段含有 dynamic 类型
+      GoodsResponse response = new GoodsResponse.fromJson(json.decode(res));
+      List<GoodsData> goodsList = response.data;
+      Provide.value<CategoryProvider>(context).setGoodsList(goodsList);
     });
   }
 
@@ -78,8 +77,14 @@ class _RightnavWidgetState extends State<RightnavWidget> {
   Widget _NavItem(index) {
     return InkWell(
       onTap: () {
+        /* 一、改变二级分类 index */
         Provide.value<CategoryProvider>(context).clickSubCategory(index);
         _getMallGoods();
+         /* 二、改变商品列表 */
+        var categoryId = widget.list[index].mallCategoryId;
+        var categorySubId = widget.list[index].mallSubId;
+        // 可选参数调用：一级分类在当前 index 可以获取【就不用从 provide 里面获取了】，二级分类从当前点击 index 获取
+        _getMallGoods(categoryId: categoryId, categorySubId: categorySubId);
       },
       child: Provide<CategoryProvider>(
         builder: (context, child, category) {
