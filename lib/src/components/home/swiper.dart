@@ -4,9 +4,16 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 /* 屏幕适配：https://github.com/OpenFlutter/flutter_screenutil */
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+/* 静态化路由 */
+import '../../routers/application.dart';
+
+/* 数据格式 */
+import '../../types/home.type.dart';
+
+
 class SwiperWidget extends StatelessWidget {
   // 传递参数
-  final List swiperData;
+  final List<SwiperData> swiperData;
   const SwiperWidget({Key key, this.swiperData}) : super(key: key);
 
   @override
@@ -22,7 +29,12 @@ class SwiperWidget extends StatelessWidget {
       width: ScreenUtil().setWidth(750),
       child: Swiper(
         itemBuilder: (BuildContext context, int index) {
-          return Image.network(swiperData[index].image);
+          return InkWell(
+            onTap: () {
+              Application.router.navigateTo(context, '/detail?id=${swiperData[index].goodsId}');
+            },
+            child: Image.network(swiperData[index].image)
+          );
         },
         itemCount: swiperData.length,
         // 分页标点

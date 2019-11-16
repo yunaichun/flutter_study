@@ -1,15 +1,15 @@
-class GoodsResponse {
+class GoodsListResponse {
   final String code;
   final String message;
-  List<GoodsData> data;
+  List<GoodsListData> data;
 
-  GoodsResponse({
+  GoodsListResponse({
     this.code,
     this.message,
     this.data
   });
 
-  factory GoodsResponse.fromJson(Map<String, dynamic> parsedJson) {
+  factory GoodsListResponse.fromJson(Map<String, dynamic> parsedJson) {
     // 子属性 - 数组
     var list = parsedJson['data'] as List;
     // 醉了 - 后台没有数据返回的是 null, 而不是空数组 []
@@ -17,8 +17,8 @@ class GoodsResponse {
     if (list == null) {
       list = [];
     }
-    List<GoodsData> data = list.map((i) => GoodsData.fromJson(i)).toList();
-    return GoodsResponse(
+    List<GoodsListData> data = list.map((i) => GoodsListData.fromJson(i)).toList();
+    return GoodsListResponse(
       code: parsedJson['code'],
       message: parsedJson['message'],
       data: data
@@ -26,7 +26,7 @@ class GoodsResponse {
   }
 }
 
-class GoodsData {
+class GoodsListData {
   final String goodsName;
   final String image;
   final String goodsId;
@@ -34,7 +34,7 @@ class GoodsData {
   final dynamic oriPrice;
   final dynamic presentPrice;
 
-  GoodsData({
+  GoodsListData({
     this.goodsName,
     this.image,
     this.goodsId,
@@ -42,8 +42,8 @@ class GoodsData {
     this.presentPrice,
   });
 
-  factory GoodsData.fromJson(Map<dynamic, dynamic> parsedJson) {
-    return GoodsData(
+  factory GoodsListData.fromJson(Map<dynamic, dynamic> parsedJson) {
+    return GoodsListData(
       goodsName: parsedJson['goodsName'],
       image: parsedJson['image'],
       goodsId: parsedJson['goodsId'],

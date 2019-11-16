@@ -12,7 +12,7 @@ import '../../service/category.dart';
 /* 左侧一级导航 */
 import './leftnav.dart';
 import './rightnav.dart';
-import './goods.dart';
+import './goods_list.dart';
 
 class Category extends StatefulWidget {
   Category({Key key}) : super(key: key);

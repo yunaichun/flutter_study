@@ -4,6 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 /* 数据类型 */
 import '../../types/home.type.dart';
 
+/* 静态化路由 */
+import '../../routers/application.dart';
+
 class FloorWidget extends StatelessWidget {
   final FloorPicData floorPicData;
   final List<FloorData> floorData;
@@ -19,7 +22,7 @@ class FloorWidget extends StatelessWidget {
       child: Column(
         children: <Widget>[
           _floorTitle(),
-          _floorContent()
+          _floorContent(context)
         ],
       ),
     );
@@ -34,27 +37,27 @@ class FloorWidget extends StatelessWidget {
   }
 
   // 楼层内容
-  Widget _floorContent() {
+  Widget _floorContent(context) {
     return Container(
       child: Column(
         children: <Widget>[
-          _firstRow(),
-          _secondRow()
+          _firstRow(context),
+          _secondRow(context)
         ],
       ),
     );
   }
 
   // 楼层 - 第一行
-  Widget _firstRow() {
+  Widget _firstRow(context) {
     return Container(
       child: Row(
         children: <Widget>[
-          _goodsItem(floorData[0]),
+          _goodsItem(context, floorData[0]),
           Column(
             children: <Widget>[
-              _goodsItem(floorData[1]),
-              _goodsItem(floorData[2])
+              _goodsItem(context, floorData[1]),
+              _goodsItem(context, floorData[2])
             ],
           )
         ],
@@ -63,24 +66,25 @@ class FloorWidget extends StatelessWidget {
   }
 
   // 楼层 - 第二行
-  Widget _secondRow() {
+  Widget _secondRow(context) {
     return Container(
       child: Row(
         children: <Widget>[
-          _goodsItem(floorData[3]),
-          _goodsItem(floorData[4]),
+          _goodsItem(context, floorData[3]),
+          _goodsItem(context, floorData[4]),
         ],
       ),
     );
   }
 
   // 每个商品内容
-  Widget _goodsItem(FloorData goods) {
+  Widget _goodsItem(context, FloorData goods) {
     return Container(
       width:ScreenUtil().setWidth(375),
       child: InkWell(
         onTap: () {
           print('点击了楼层商品');
+          Application.router.navigateTo(context, '/detail?id=${goods.goodsId}');
         },
         child: Image.network(goods.image),
       ),

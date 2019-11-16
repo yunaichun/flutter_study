@@ -169,12 +169,14 @@ class TelephoneData {
 
 /*  五、商品推荐 */
 class RecommendData {
+  final String goodsId;
   final String goodsName;
   final String image;
   final int mallPrice;
   final int price;
 
   RecommendData({
+    this.goodsId,
     this.goodsName,
     this.image,
     this.mallPrice,
@@ -183,6 +185,7 @@ class RecommendData {
 
   factory RecommendData.fromJson(Map<String, dynamic> parsedJson) {
     return RecommendData(
+      goodsId: parsedJson['goodsId'],
       goodsName: parsedJson['goodsName'],
       image: parsedJson['image'],
       mallPrice: parsedJson['mallPrice'],
@@ -206,14 +209,17 @@ class FloorPicData {
   }
 }
 class FloorData {
+  final String goodsId;
   final String image;
 
   FloorData({
+    this.goodsId,
     this.image
   });
 
   factory FloorData.fromJson(Map<String, dynamic> parsedJson){
     return FloorData(
+      goodsId: parsedJson['goodsId'],
       image: parsedJson['image']
     );
   }

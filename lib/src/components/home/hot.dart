@@ -4,6 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 /* 数据格式 */
 import '../../types/home.refresh.type.dart';
 
+/* 静态化路由 */
+import '../../routers/application.dart';
+
 class HotWidget extends StatefulWidget {
   /* 注意：
     1、动态组件的传值通过 widget.hotList 获取
@@ -53,6 +56,7 @@ class _HotWidgetState extends State<HotWidget> {
         return InkWell(
           onTap: () {
             print('点击了火爆商品');
+             Application.router.navigateTo(context, '/detail?id=${item.goodsId}');
           },
           child: Container(
             width: ScreenUtil().setHeight(372),

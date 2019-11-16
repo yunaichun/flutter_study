@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 /* 屏幕适配：https://github.com/OpenFlutter/flutter_screenutil */
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+/* 静态化路由 */
+import '../../routers/application.dart';
+
 class RecommendWidget extends StatelessWidget {
   final List recommendData;
   const RecommendWidget({Key key, this.recommendData}) : super(key: key);
@@ -58,16 +61,18 @@ class RecommendWidget extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: recommendData.length,
         itemBuilder: (context, index) {
-          return __recommedItem(index);
+          return __recommedItem(context, index);
         },
       ),
     );
   }
 
   // 商品推荐每一项
-  Widget __recommedItem(int index){
+  Widget __recommedItem(context, int index){
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Application.router.navigateTo(context, '/detail?id=${recommendData[index].goodsId}');
+      },
       child: Container(
         height: ScreenUtil().setHeight(330),
         width: ScreenUtil().setWidth(250),

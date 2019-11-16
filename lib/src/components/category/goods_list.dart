@@ -19,7 +19,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'dart:convert';
 /* 数据格式 */
 import '../../types/category.type.dart';
-import '../../types/goods.type.dart';
+import '../../types/goods_list.type.dart';
 /* 数据请求 */
 import '../../service/category.dart';
 
@@ -49,10 +49,10 @@ class _GoodsWidgetState extends State<GoodsWidget> {
     };
     getMallGoods(formData: formData).then((res) {
       // 这里需要用 json.decode , 不然会报错，因为定义的字段含有 dynamic 类型
-      GoodsResponse response = new GoodsResponse.fromJson(json.decode(res));
+      GoodsListResponse response = new GoodsListResponse.fromJson(json.decode(res));
       if (response.data.length != 0) {
         /* 一、添加商品 */
-        List<GoodsData> goodsList = Provide.value<CategoryProvider>(context).goodsList;
+        List<GoodsListData> goodsList = Provide.value<CategoryProvider>(context).goodsList;
         goodsList.addAll(response.data);
         Provide.value<CategoryProvider>(context).setGoodsList(goodsList);
         /* 二、更改 page */
@@ -115,7 +115,7 @@ class _GoodsWidgetState extends State<GoodsWidget> {
     );
   }
 
-  Widget _GoodItem(List<GoodsData> list, int index) {
+  Widget _GoodItem(List<GoodsListData> list, int index) {
     return InkWell(
       onTap: () {},
       child: Container(
@@ -141,14 +141,14 @@ class _GoodsWidgetState extends State<GoodsWidget> {
     );
   }
 
-  Widget _imageWidget(List<GoodsData> list, int index) {
+  Widget _imageWidget(List<GoodsListData> list, int index) {
     return Container(
       width: ScreenUtil().setWidth(200),
       child: Image.network(list[index].image),
     );
   }
 
-  Widget _goodsName(List<GoodsData> list, int index) {
+  Widget _goodsName(List<GoodsListData> list, int index) {
     return Container(
       padding: EdgeInsets.all(5.0),
       width: ScreenUtil().setWidth(370),
@@ -162,7 +162,7 @@ class _GoodsWidgetState extends State<GoodsWidget> {
     );
   }
 
-  Widget _goodsPrice(List<GoodsData> list, int index) {
+  Widget _goodsPrice(List<GoodsListData> list, int index) {
     return Container(
       margin: EdgeInsets.only(top:20.0),
       width: ScreenUtil().setWidth(370),

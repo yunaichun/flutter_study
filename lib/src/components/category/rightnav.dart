@@ -11,7 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:convert';
 /* 数据格式 */
 import '../../types/category.type.dart';
-import '../../types/goods.type.dart';
+import '../../types/goods_list.type.dart';
 /* 数据请求 */
 import '../../service/category.dart';
 
@@ -45,8 +45,8 @@ class _RightnavWidgetState extends State<RightnavWidget> {
     };
     getMallGoods(formData: formData).then((res) {
       // 这里需要用 json.decode , 不然会报错，因为定义的字段含有 dynamic 类型
-      GoodsResponse response = new GoodsResponse.fromJson(json.decode(res));
-      List<GoodsData> goodsList = response.data;
+      GoodsListResponse response = new GoodsListResponse.fromJson(json.decode(res));
+      List<GoodsListData> goodsList = response.data;
       Provide.value<CategoryProvider>(context).setGoodsList(goodsList);
     });
   }

@@ -1,0 +1,30 @@
+{
+    "code": "0",
+    "message": "success",
+    "data": {
+        "goodInfo": {
+            "image5": "",
+            "amount": 10,
+            "image3": "",
+            "image4": "",
+            "goodsId": "567e90dcc8e9425eb432ce5794ac4a99",
+            "isOnline": "yes",
+            "image1": "https://images.baixingliangfan.cn/shopGoodsImg/20190909/20190909173535_4348.jpg",
+            "image2": "",
+            "goodsSerialNumber": "6901683801103",
+            "oriPrice": 1198,
+            "presentPrice": 1198,
+            "comPic": "https://images.baixingliangfan.cn/compressedPic/20190909173535_4348.jpg",
+            "state": 1,
+            "shopId": "402880e860166f3c0160167897d60002",
+            "goodsName": "郎酒青花郎（20）53°",
+            "goodsDetail": "<img width\t\"100%\" height=\"auto\" alt=\"\" src=\"https://images.baixingliangfan.cn/shopGoodsDetailImg/20190109/20190109173257_3090.jpg\" /><img width=\"100%\" height=\"auto\" alt=\"\" src=\"https://images.baixingliangfan.cn/shopGoodsDetailImg/20190109/20190109173258_9404.jpg\" /><img width=\"100%\" height=\"auto\" alt=\"\" src=\"https://images.baixingliangfan.cn/shopGoodsDetailImg/20190109/20190109173258_400.jpg\" /><img width=\"100%\" height=\"auto\" alt=\"\" src=\"https://images.baixingliangfan.cn/shopGoodsDetailImg/20190109/20190109173258_5054.jpg\" /><img width=\"100%\" height=\"auto\" alt=\"\" src=\"https://images.baixingliangfan.cn/shopGoodsDetailImg/20190109/20190109173259_1509.jpg\" /><img width=\"100%\" height=\"auto\" alt=\"\" src=\"https://images.baixingliangfan.cn/shopGoodsDetailImg/20190109/20190109173259_9032.jpg\" /><img width=\"100%\" height=\"auto\" alt=\"\" src=\"https://images.baixingliangfan.cn/shopGoodsDetailImg/20190109/20190109173259_8094.jpg\" /><img width=\"100%\" height=\"auto\" alt=\"\" src=\"https://images.baixingliangfan.cn/shopGoodsDetailImg/20190109/20190109173300_9629.jpg\" /><img width=\"100%\" height=\"auto\" alt=\"\" src=\"https://images.baixingliangfan.cn/shopGoodsDetailImg/20190109/20190109173300_5372.jpg\" /><img width=\"100%\" height=\"auto\" alt=\"\" src=\"https://images.baixingliangfan.cn/shopGoodsDetailImg/20190109/20190109173300_6134.jpg\" /><img width=\"100%\" height=\"auto\" alt=\"\" src=\"https://images.baixingliangfan.cn/shopGoodsDetailImg/20190109/20190109173301_2833.jpg\" /><img width=\"100%\" height=\"auto\" alt=\"\" src=\"https://images.baixingliangfan.cn/shopGoodsDetailImg/20190109/20190109173331_3388.jpg\" />"
+        },
+        "goodComments": [],
+        "advertesPicture": {
+            "PICTURE_ADDRESS": "http://images.baixingliangfan.cn/advertesPicture/20190113/20190113134955_5825.jpg",
+            "TO_PLACE": "1",
+            "urlType": 0
+        }
+    }
+}

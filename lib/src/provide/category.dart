@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 /* 数据格式 */
 import '../types/category.type.dart';
-import '../types/goods.type.dart';
+import '../types/goods_list.type.dart';
 
 class CategoryProvider with ChangeNotifier {
   
@@ -11,7 +11,7 @@ class CategoryProvider with ChangeNotifier {
   int categoryIndex = 0;
   int categorySubIndex = 0;
   List<CategoryData> categoryList = [];
-  List<GoodsData> goodsList = [];
+  List<GoodsListData> goodsList = [];
 
   clickCategory(int index){
     categoryIndex = index;
@@ -29,7 +29,7 @@ class CategoryProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  setGoodsList(List<GoodsData> list) {
+  setGoodsList(List<GoodsListData> list) {
     goodsList = list;
     notifyListeners();
   }
