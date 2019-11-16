@@ -84,6 +84,10 @@ class _HomeState extends State<Home> {
       ),
       /* 方法二：通过 FutureBuilder 初始化数据 */
       body: FutureBuilder(
+        /* 注意：
+          1、Future封装成方法的时候，必须要有 return
+          2、直接在组件中调用请求则不需要考虑
+        */
         future: gethomePageContextDEV(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {

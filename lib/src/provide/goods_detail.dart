@@ -10,7 +10,7 @@ import '../service/goods_detail.dart';
 import 'dart:convert';
 
 class GoodsDetailProvider with ChangeNotifier {
-  GoodsDetailData goodsDetail;
+  GoodsDetailData goodsDetail = null;
 
   //从后台获取商品信息
   getGoodsDetailRequest(String id) {
@@ -25,4 +25,4 @@ class GoodsDetailProvider with ChangeNotifier {
     });
   }
 
-} 
+}
