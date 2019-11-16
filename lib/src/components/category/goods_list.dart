@@ -25,8 +25,6 @@ class GoodsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Provide<CategoryProvider>(
         builder: (context, child, val) {
-          print(val.goodsList);
-          print('日你妈的。。。。。。');
           // 每次切换分类的时候滚动条到最顶部
           try {
             if(val.page == 1){

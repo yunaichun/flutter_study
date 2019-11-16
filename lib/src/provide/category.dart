@@ -20,6 +20,12 @@ class CategoryProvider with ChangeNotifier {
   List<CategoryData> categoryList = [];
   List<SubCategoryData> subCategoryList = [];
   List<GoodsListData> goodsList = [];
+  SubCategoryData all = new SubCategoryData(
+    mallCategoryId: '',
+    mallSubId: '',
+    mallSubName: '全部',
+    comments: 'null',
+  );
 
   // 获取分类数据
   getCategoryDEVRequest() async {
@@ -27,7 +33,8 @@ class CategoryProvider with ChangeNotifier {
       // 这里不用 json.decode , 不然会报错, 因为定义的字段不含有 dynamic 类型
       CategoryResponse response = new CategoryResponse.fromJson(res);
       categoryList = response.data;
-      subCategoryList = response.data[0].bxMallSubDto;
+      subCategoryList.add(all);
+      subCategoryList.addAll(response.data[0].bxMallSubDto);
 
       notifyListeners();
     });
@@ -74,7 +81,8 @@ class CategoryProvider with ChangeNotifier {
     categoryIndex = index;
     categorySubIndex = 0;
     page = 1;
-    subCategoryList = categoryList[index].bxMallSubDto;
+    subCategoryList.add(all);
+    subCategoryList.addAll(categoryList[index].bxMallSubDto);
     // 商品是累加的，请求前先清空
     goodsList = [];
 
@@ -117,8 +125,6 @@ class CategoryProvider with ChangeNotifier {
   
   // 首页导航跳转到分类页
   homeToCategory(String mallCategoryId) async {
-    print(mallCategoryId);
-    print('=================');
     int index = 0;
     categoryList.forEach((item) {
       if (item.mallCategoryId == mallCategoryId) {
@@ -131,7 +137,8 @@ class CategoryProvider with ChangeNotifier {
     // 商品是累加的，请求前先清空
     goodsList = [];
     // 二级分类也要改啊
-    subCategoryList = categoryList[categoryIndex].bxMallSubDto;
+    subCategoryList.add(all);
+    subCategoryList.addAll(categoryList[categoryIndex].bxMallSubDto);
 
     await getMallGoodsRequest(
       categoryId: mallCategoryId,
