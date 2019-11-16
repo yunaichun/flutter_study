@@ -12,7 +12,7 @@ import 'dart:convert';
 class CartProvider with ChangeNotifier{
   List<CartItem> cartList = [];
 
-  // 从持久化数据中获取 cartList
+  // 优先从持久化数据中获取 cartList ，否则从 Provider 中获取
   getCartInfo() async {
     // 一、获取持久化存储的值
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -42,7 +42,6 @@ class CartProvider with ChangeNotifier{
     bool exist = false;
     int index = 0; // forEach 遍历拿不到 index
     cartList.forEach((item) {
-      print(item);
       if (item.goodsId == goodsId) {
         cartList[index].count = item.count + 1;
         exist = true;
