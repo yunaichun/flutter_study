@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/*以下是 demo 页面*/
+/* 以下是 demo 页面 */
 // import 'demo/01/HellowWorld.dart';
 // import 'demo/02/TextWidget.dart';
 // import 'demo/02/Container.dart';
@@ -33,9 +33,10 @@ import 'package:flutter/material.dart';
 // import 'demo/05/13/Draggable.dart';
 // import 'demo/07/provide.dart';
 // import 'demo/08/index.dart';
+import 'demo/09/shared_preferences.dart';
 
 /* 下面是商城项目的入口文件 */
-import 'src/index.dart';
+// import 'src/index.dart';
 
 // 主入口函数
 void main() => runApp(MyApp());

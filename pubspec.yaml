@@ -41,6 +41,8 @@ dependencies:
   fluro: "^1.5.1"
   # flutter 中渲染 html 代码 【https://github.com/Sub6Resources/flutter_html】
   flutter_html: ^0.11.0
+  # 数据持久化【https://github.com/flutter/plugins/tree/master/packages/shared_preferences】
+  shared_preferences: ^0.5.4+5
   
 dev_dependencies:
   flutter_test:
