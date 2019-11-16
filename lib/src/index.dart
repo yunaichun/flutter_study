@@ -11,6 +11,7 @@ import './routers/application.dart';
 import 'package:provide/provide.dart';
 import './provide/category.dart';
 import './provide/goods_detail.dart';
+import './provide/cart.dart';
 
 /* 底部导航 */
 import './bottom.dart';
@@ -22,9 +23,11 @@ ProviderNode MyApp() {
   var providers = Providers();
   var categoryProvider = CategoryProvider();
   var goodsDetailProvider = GoodsDetailProvider();
+  var cartProvider = CartProvider();
   providers
   ..provide(Provider<CategoryProvider>.value(categoryProvider))
-  ..provide(Provider<GoodsDetailProvider>.value(goodsDetailProvider));
+  ..provide(Provider<GoodsDetailProvider>.value(goodsDetailProvider))
+  ..provide(Provider<CartProvider>.value(cartProvider));
   return ProviderNode(
     child: Index(),
     providers: providers
