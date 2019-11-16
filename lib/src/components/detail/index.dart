@@ -20,7 +20,7 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '商品详细页',
+      title: '商品详情页',
       theme: ThemeData(
         primaryColor: Colors.pink
       ),
@@ -33,7 +33,7 @@ class DetailPage extends StatelessWidget {
               Navigator.pop(context);
             },
             ),
-          title: Text('商品详细页'),
+          title: Text('商品详情页'),
         ),
         body: FutureBuilder(
           future: _getGoodsDetail(context),

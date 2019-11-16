@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 
+/* 组件 */
+import './top.dart';
+
 class Member extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('商城会员中心页'),
+        title: Text('会员中心'),
       ),
-      body:Center(
-        child: Text('商城会员中心页'),
+      body: ListView(
+        children: <Widget>[
+          TopWidget()
+        ],
       )
     );
   }
