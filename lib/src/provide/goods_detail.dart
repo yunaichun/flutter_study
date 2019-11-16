@@ -14,12 +14,11 @@ class GoodsDetailProvider with ChangeNotifier {
   int currentTab = 1;
 
   //从后台获取商品信息
-  getGoodsDetailRequest(String id) {
+  getGoodsDetailRequest(String id) async{
     var formData = { 'goodId': id };
-    getGoodsDetail(formData:formData).then((res){
+    await getGoodsDetail(formData:formData).then((res){
       // 这里不用 json.decode , 不然会报错, 因为定义的字段不含有 dynamic 类型
       GoodsDetailResponse response = new GoodsDetailResponse.fromJson(json.decode(res));
-      print(response);
       goodsDetail = response.data;
       
       notifyListeners();

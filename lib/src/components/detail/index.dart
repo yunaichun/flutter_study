@@ -8,6 +8,7 @@ import 'package:flutter_study/src/provide/goods_detail.dart';
 import './top.dart';
 import './explain.dart';
 import './tabBar.dart';
+import './detail.dart';
 
 class DetailPage extends StatelessWidget {
   final String goodsId;
@@ -38,12 +39,14 @@ class DetailPage extends StatelessWidget {
           builder: (context, snapshot){
             if(snapshot.hasData){
                 return Container(
-                  child: Column(
-                        children: <Widget>[
-                          TopWidget(),
-                          ExplainWidget(),
-                          TabBarWidget()
-                        ],
+                  // 用 ListView 可以防止溢出，用 Column 就会溢出
+                  child: ListView(
+                    children: <Widget>[
+                      TopWidget(),
+                      ExplainWidget(),
+                      TabBarWidget(),
+                      DetailWidget()
+                    ],
                   )
                 );
             }else{
