@@ -4,11 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:provide/provide.dart';
 import 'package:flutter_study/src/provide/goods_detail.dart';
 
-/* 数据格式 */
-import '../../types/category.type.dart';
-
 /* 组件 */
 import './top.dart';
+import './explain.dart';
 
 class DetailPage extends StatelessWidget {
   final String goodsId;
@@ -41,7 +39,8 @@ class DetailPage extends StatelessWidget {
                 return Container(
                   child: Column(
                         children: <Widget>[
-                          TopWidget()
+                          TopWidget(),
+                          ExplainWidget()
                         ],
                   )
                 );
