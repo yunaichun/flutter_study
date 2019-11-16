@@ -7,7 +7,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provide/provide.dart';
 import 'package:flutter_study/src/provide/goods_detail.dart';
 import 'package:flutter_study/src/provide/cart.dart';
+import 'package:flutter_study/src/provide/bottom.dart';
 
+/* 静态化路由 */
+import '../../routers/application.dart';
+
+/* 数据格式 */
 import '../../types/goods_detail.type.dart';
 
 class BottomWidget extends StatelessWidget {
@@ -21,7 +26,7 @@ class BottomWidget extends StatelessWidget {
           color: Colors.white,
           child: Row(
             children: <Widget>[
-              _shopIcon(),
+              _shopIcon(context),
               _addCartBtn(context, val.goodsDetail),
               _buyBtn(context)
             ],
@@ -32,9 +37,18 @@ class BottomWidget extends StatelessWidget {
   }
 
   // 购物车图标
-  Widget _shopIcon() {
+  Widget _shopIcon(context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        /* 注意：
+            有一个奇怪的现象，详情页面顶部返回调用 Navigator.pop(context) 可以返回
+            但是，内部组件调用 Navigator.pop(context) 不能正常返回。
+            解决方案是为主页面再定义一个路由。
+        */
+        // Navigator.pop(context);
+        Application.router.navigateTo(context, '/');
+        Provide.value<BottomIndexProvide>(context).changeIndex(2);
+      },
       child: Container(
         width: ScreenUtil().setWidth(110) ,
         alignment: Alignment.center,
@@ -73,6 +87,7 @@ class BottomWidget extends StatelessWidget {
     );
   }
 
+  // 立即购买
   Widget _buyBtn(context) {
     return InkWell(
       onTap: () async {

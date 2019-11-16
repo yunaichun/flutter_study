@@ -37,9 +37,9 @@ class TopWidget extends StatelessWidget {
 
   //商品图片
   Widget _goodsImage(image) {
-    return  Image.network(
-        image,
-        width: ScreenUtil().setWidth(740) 
+    return Image.network(
+      image,
+      width: ScreenUtil().setWidth(740) 
     );
   }
 

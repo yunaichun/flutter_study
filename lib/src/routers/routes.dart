@@ -8,7 +8,7 @@ import './handler.dart';
 
 class Routes {
   /* 一、定义路由路径 */
-  static String root='/';
+  static String root = '/';
   static String detailPage = '/detail';
 
   /* 二、开始配置路由 */
@@ -21,7 +21,10 @@ class Routes {
     );
     
     /* 2.2、存在的页面路由 */
+    /* 详情页 */
     router.define(detailPage, handler: detailPageHandler);
+    /* 初始页 */
+    router.define(root, handler: rootPageHandler);
   }
 
 }

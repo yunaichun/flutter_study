@@ -32,7 +32,7 @@ class DetailPage extends StatelessWidget {
               print('返回上一页');
               Navigator.pop(context);
             },
-            ),
+          ),
           title: Text('商品详情页'),
         ),
         body: FutureBuilder(

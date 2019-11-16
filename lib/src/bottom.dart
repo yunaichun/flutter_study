@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+
+/* 添加 provide 状态管理【https://github.com/google/flutter-provide】 */
+import 'package:provide/provide.dart';
+import './provide/bottom.dart';
+
 /* 引入页面四个部分 */
 import './components/home/index.dart';
 import './components/category/index.dart';
@@ -23,15 +28,6 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> w
   */
   @override
   bool get wantKeepAlive => true;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   print('111111111111111111111111111');
-  // }
-
-  // 当前 tab 索引
-  int currentIndex = 0;
   
   // 底部 tab 条目
   List<BottomNavigationBarItem> bottomTabs = [
@@ -63,26 +59,29 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> w
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
-      bottomNavigationBar: BottomNavigationBar(
-        // 底部切换效果：fixed 固定、shifting 切换动画
-        type: BottomNavigationBarType.fixed,
-        // 当前 tab 索引
-        currentIndex: currentIndex,
-        // tab 条目
-        items: bottomTabs,
-        onTap: (index) {
-          setState(() {
-            currentIndex = index;
-          });
-        },
-      ),
-      // body: body[currentIndex],
-      body: IndexedStack(
-        index: currentIndex,
-        children: body
-      ),
+    return Provide<BottomIndexProvide>(
+      builder: (context, child, val) {
+        return Scaffold(
+          backgroundColor: Color.fromRGBO(244, 245, 245, 1.0),
+          bottomNavigationBar: BottomNavigationBar(
+            // 底部切换效果：fixed 固定、shifting 切换动画
+            type: BottomNavigationBarType.fixed,
+            // 当前 tab 索引
+            currentIndex: val.currentIndex,
+            // tab 条目
+            items: bottomTabs,
+            onTap: (index) {
+              val.changeIndex(index);
+              // Provide.value<BottomIndexProvide>(context).changeIndex(index);
+            },
+          ),
+          // body: body[currentIndex],
+          body: IndexedStack(
+            index: val.currentIndex,
+            children: body
+          ),
+        );
+      }
     );
   }
 }

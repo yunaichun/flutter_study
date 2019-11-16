@@ -12,6 +12,7 @@ import 'package:provide/provide.dart';
 import './provide/category.dart';
 import './provide/goods_detail.dart';
 import './provide/cart.dart';
+import './provide/bottom.dart';
 
 /* 底部导航 */
 import './bottom.dart';
@@ -24,10 +25,12 @@ ProviderNode MyApp() {
   var categoryProvider = CategoryProvider();
   var goodsDetailProvider = GoodsDetailProvider();
   var cartProvider = CartProvider();
+  var bottomIndexProvide = BottomIndexProvide();
   providers
   ..provide(Provider<CategoryProvider>.value(categoryProvider))
   ..provide(Provider<GoodsDetailProvider>.value(goodsDetailProvider))
-  ..provide(Provider<CartProvider>.value(cartProvider));
+  ..provide(Provider<CartProvider>.value(cartProvider))
+  ..provide(Provider<BottomIndexProvide>.value(bottomIndexProvide));
   return ProviderNode(
     child: Index(),
     providers: providers
