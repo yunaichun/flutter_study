@@ -37,8 +37,8 @@ class NavigatorWidget extends StatelessWidget {
 
   Widget _gridViewItem(BuildContext context, item) {
     return InkWell(
-      onTap: () {
-        Provide.value<CategoryProvider>(context).homeToCategory(item.mallCategoryId);
+      onTap: () async {
+        await Provide.value<CategoryProvider>(context).homeToCategory(item.mallCategoryId);
         Provide.value<BottomIndexProvide>(context).changeIndex(1);
       },
       child: Column(

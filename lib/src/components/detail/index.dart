@@ -37,7 +37,7 @@ class DetailPage extends StatelessWidget {
         ),
         body: FutureBuilder(
           future: _getGoodsDetail(context),
-          builder: (context, snapshot){
+          builder: (context, snapshot) {
             if(snapshot.hasData){
                 return Container(
                   child: Stack(
