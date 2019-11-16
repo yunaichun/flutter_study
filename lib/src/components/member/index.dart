@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 /* 组件 */
 import './top.dart';
 import './order.dart';
+import './list.dart';
 
 class Member extends StatelessWidget {
   @override
@@ -14,7 +15,8 @@ class Member extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           TopWidget(),
-          OrderWidget()
+          OrderWidget(),
+          ListWidget()
         ],
       )
     );

@@ -8,8 +8,6 @@ class OrderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Container(
-      width: ScreenUtil().setWidth(710),
-      padding: EdgeInsets.all(20),
       child: Column(
         children: <Widget>[
           _orderTitle(),
@@ -42,8 +40,8 @@ class OrderWidget extends StatelessWidget {
     return Container(
       width: ScreenUtil().setWidth(710),
       height: ScreenUtil().setHeight(150),
-      margin: EdgeInsets.only(top: 5),
       padding: EdgeInsets.only(top: 20),
+      margin: EdgeInsets.only(top: 5),
       color: Colors.white,
       child: Row(
         children: <Widget>[

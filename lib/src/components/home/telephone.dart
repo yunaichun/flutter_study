@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-/* 屏幕适配：https://github.com/OpenFlutter/flutter_screenutil */
+/* 拨打电话、跳转链接：https://github.com/flutter/plugins/tree/master/packages/url_launcher/url_launcher */
 import 'package:url_launcher/url_launcher.dart';
 /* 数据类型 */
 import '../../types/home.type.dart';
@@ -22,7 +22,8 @@ class TelephoneWidget extends StatelessWidget {
 
   // 拨打电话功能
   void _launchUrl() async {
-    String url = 'tel:'+ telephoneData.leaderPhone;
+    // String url = 'tel:'+ telephoneData.leaderPhone;
+    String url = 'tel:13132290863';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
