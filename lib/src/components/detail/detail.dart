@@ -20,6 +20,9 @@ class DetailWidget extends StatelessWidget {
           var goodsInfo = val.goodsDetail.goodInfo;
           if (val.currentTab == 1) {
             return Container(
+              margin: EdgeInsets.only(
+                bottom: ScreenUtil().setHeight(80),
+              ),
               child: Html(
                 data: goodsInfo.goodsDetail
               ),
