@@ -56,7 +56,7 @@ class _HotWidgetState extends State<HotWidget> {
         return InkWell(
           onTap: () {
             print('点击了火爆商品');
-             Application.router.navigateTo(context, '/detail?id=${item.goodsId}');
+            Application.router.navigateTo(context, '/detail?id=${item.goodsId}');
           },
           child: Container(
             width: ScreenUtil().setHeight(372),

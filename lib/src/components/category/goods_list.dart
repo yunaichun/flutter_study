@@ -9,6 +9,9 @@ import 'package:flutter_easyrefresh/material_header.dart';
 import 'package:provide/provide.dart';
 import 'package:flutter_study/src/provide/category.dart';
 
+/* 静态化路由 */
+import '../../routers/application.dart';
+
 /* 屏幕适配：https://github.com/OpenFlutter/flutter_screenutil */
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -79,12 +82,12 @@ class _GoodsWidgetState extends State<GoodsWidget> {
       child: Provide<CategoryProvider>(
         builder: (context, child, category) {
           // 每次切换分类的时候滚动条到最顶部
-          try{
+          try {
             if(Provide.value<CategoryProvider>(context).page == 1){
               scrollController.jumpTo(0.0);
             }
-          }catch(e){
-            print('进入页面第一次初始化：${e}');
+          } catch(e) {
+            print('进入页面第一次初始化：$e');
           }
 
           if (category.goodsList.length != 0) {
@@ -94,7 +97,7 @@ class _GoodsWidgetState extends State<GoodsWidget> {
                 controller: scrollController,
                 itemCount: category.goodsList.length,
                 itemBuilder: (context, index) {
-                  return _GoodItem(category.goodsList, index);
+                  return _goodItem(category.goodsList, index);
                 },
               ),
               onLoad: () async {
@@ -115,9 +118,11 @@ class _GoodsWidgetState extends State<GoodsWidget> {
     );
   }
 
-  Widget _GoodItem(List<GoodsListData> list, int index) {
+  Widget _goodItem(List<GoodsListData> list, int index) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Application.router.navigateTo(context, '/detail?id=${list[index].goodsId}');
+      },
       child: Container(
         padding: EdgeInsets.only(top: 5.0,bottom: 5.0),
         decoration: BoxDecoration(
