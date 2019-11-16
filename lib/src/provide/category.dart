@@ -43,4 +43,17 @@ class CategoryProvider with ChangeNotifier {
     page = 1;
     notifyListeners();
   }
+
+  homeToCategory(String mallCategoryId) {
+    int index = 0;
+    categoryList.forEach((item) {
+      if (item.mallCategoryId == mallCategoryId) {
+        categoryIndex = index;
+      }
+      index++;
+    });
+    categorySubIndex = 0;
+    page = 1;
+    notifyListeners();
+  }
 }

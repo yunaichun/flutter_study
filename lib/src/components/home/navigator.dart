@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+
 /* 屏幕适配：https://github.com/OpenFlutter/flutter_screenutil */
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+/* 添加 provide 状态管理【https://github.com/google/flutter-provide】 */
+import 'package:provide/provide.dart';
+import 'package:flutter_study/src/provide/bottom.dart';
+import 'package:flutter_study/src/provide/category.dart';
 
 class NavigatorWidget extends StatelessWidget {
   final List navigatorData;
@@ -32,7 +38,8 @@ class NavigatorWidget extends StatelessWidget {
   Widget _gridViewItem(BuildContext context, item) {
     return InkWell(
       onTap: () {
-        print('点击了导航');
+        Provide.value<CategoryProvider>(context).homeToCategory(item.mallCategoryId);
+        Provide.value<BottomIndexProvide>(context).changeIndex(1);
       },
       child: Column(
         children: <Widget>[

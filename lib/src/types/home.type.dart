@@ -118,16 +118,19 @@ class SwiperData {
 
 /*  二、顶部导航 */
 class NavigatorData {
+  final String mallCategoryId;
   final String mallCategoryName;
   final String image;
   
   NavigatorData({
+    this.mallCategoryId,
     this.mallCategoryName,
     this.image
   });
 
   factory NavigatorData.fromJson(Map<String, dynamic> parseJson) {
     return NavigatorData(
+      mallCategoryId: parseJson['mallCategoryId'],
       mallCategoryName: parseJson['mallCategoryName'],
       image: parseJson['image'],
     );
