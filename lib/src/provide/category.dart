@@ -20,6 +20,15 @@ class CategoryProvider with ChangeNotifier {
   List<CategoryData> categoryList = [];
   List<SubCategoryData> subCategoryList = [];
   List<GoodsListData> goodsList = [];
+  /* 注意：
+    1、如果使用 cartList = json.decode(cartString.toString());
+       在调用 cartList.add 的时候会报错 'List<dynamic>' is not a subtype of type 'List<CartItem>'
+       需要遍历下此数组，每一项都调用下 fromJson 方法
+    2、Map<String, dynamic> 对象通过 add 添加至 List<CartItem>
+       需要在 types 文件中写 toJson 方法 
+    3、根据数组遍历得到的结果最后别忘记 toList() 。如首页导航组件
+       navigatorData.map((item) => _gridViewItem(context, item)).toList()
+  */
   SubCategoryData all = new SubCategoryData(
     mallCategoryId: '',
     mallSubId: '',

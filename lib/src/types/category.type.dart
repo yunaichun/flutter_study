@@ -72,14 +72,5 @@ class SubCategoryData {
       comments: parsedJson['comments'],
     );
   }
-
-  // 这个方法相当重要，可以将一个  Map<String, dynamic> 对象通过 add 添加至 List<CartItem> 中
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['mallSubId'] = this.mallSubId;
-    data['mallCategoryId'] = this.mallCategoryId;
-    data['mallSubName'] = this.mallSubName;
-    data['comments'] = this.comments;
-    return data;
-  }
+  
 }
