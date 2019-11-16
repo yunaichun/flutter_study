@@ -83,24 +83,27 @@ class RecommendWidget extends StatelessWidget {
             left: BorderSide(width: 1.0, color: Colors.black12)
           )
         ),
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              Image.network(
-                recommendData[index].image,
-                height: ScreenUtil().setHeight(220),
+        /* 解决 bug：
+           1、防止溢出+滑动：SingleChildScrollView + GridView(physics: NeverScrollableScrollPhysics())
+           2、防止溢出：SingleChildScrollView + Column
+           3、最终解决方案：ListView
+        */
+        child: ListView(
+          children: <Widget>[
+            Image.network(
+              recommendData[index].image,
+              height: ScreenUtil().setHeight(220),
+            ),
+            Text('￥${recommendData[index].mallPrice}'),
+            Text(
+              '￥${recommendData[index].price}',
+              // 给文本设置样式
+              style: TextStyle(
+                color: Colors.grey,
+                decoration: TextDecoration.lineThrough
               ),
-              Text('￥${recommendData[index].mallPrice}'),
-              Text(
-                '￥${recommendData[index].price}',
-                // 给文本设置样式
-                style: TextStyle(
-                  color: Colors.grey,
-                  decoration: TextDecoration.lineThrough
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         )
       )
     );
