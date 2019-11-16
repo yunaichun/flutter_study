@@ -7,6 +7,7 @@ import 'package:flutter_study/src/provide/goods_detail.dart';
 /* 组件 */
 import './top.dart';
 import './explain.dart';
+import './tabBar.dart';
 
 class DetailPage extends StatelessWidget {
   final String goodsId;
@@ -40,7 +41,8 @@ class DetailPage extends StatelessWidget {
                   child: Column(
                         children: <Widget>[
                           TopWidget(),
-                          ExplainWidget()
+                          ExplainWidget(),
+                          TabBarWidget()
                         ],
                   )
                 );

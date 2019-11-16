@@ -11,6 +11,7 @@ import 'dart:convert';
 
 class GoodsDetailProvider with ChangeNotifier {
   GoodsDetailData goodsDetail = null;
+  int currentTab = 1;
 
   //从后台获取商品信息
   getGoodsDetailRequest(String id) {
@@ -25,4 +26,8 @@ class GoodsDetailProvider with ChangeNotifier {
     });
   }
 
+  setCurrentTab(int tabIndex) {
+    currentTab = tabIndex;
+    notifyListeners();
+  }
 }
