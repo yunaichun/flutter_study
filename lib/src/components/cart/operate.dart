@@ -34,7 +34,7 @@ class CartOperateWidget extends StatelessWidget {
     );
   }
 
-  //中间数量显示区域
+  // 中间数量显示区域
   Widget _goodsCount(BuildContext context) {
     return Container(
       width: ScreenUtil().setWidth(70),

@@ -55,7 +55,7 @@ class CartListWidget extends StatelessWidget {
           _cartCheckBtn(context, item),
           _cartImage(context, item),
           _cartGoodsName(context, item),
-          _cartPrice(context, item)
+          _cartPriceAndDelete(context, item)
         ],
       )
     );
@@ -106,8 +106,8 @@ class CartListWidget extends StatelessWidget {
     );
   }
 
-  // 商品价格
-  Widget _cartPrice(BuildContext context, CartItem item){
+  // 商品价格和删除商品
+  Widget _cartPriceAndDelete(BuildContext context, CartItem item){
     return Container(
       width: ScreenUtil().setWidth(120),
       alignment: Alignment.centerRight,
@@ -120,7 +120,9 @@ class CartListWidget extends StatelessWidget {
           Container(
             alignment: Alignment.centerRight,
             child: InkWell(
-              onTap: (){},
+              onTap: () {
+                Provide.value<CartProvider>(context).deleteGoods(item.goodsId);
+              },
               child: Icon(
                 Icons.delete_forever,
                 color: Colors.black26,

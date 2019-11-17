@@ -44,7 +44,7 @@ class Cart extends StatelessWidget {
     2、直接在组件中调用请求则不需要考虑
   */
   Future<String> _getCartInfo(BuildContext context) async{
-    await Provide.value<CartProvider>(context).getCartInfo();
+    await Provide.value<CartProvider>(context).getGoodsList();
     return '加载完成';
   }
 }

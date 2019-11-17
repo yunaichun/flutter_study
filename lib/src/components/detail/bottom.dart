@@ -66,12 +66,13 @@ class BottomWidget extends StatelessWidget {
     return InkWell(
       onTap: () async {
         await Provide.value<CartProvider>(context)
-        .save(
+        .saveGoods(
           goodsDetail.goodInfo.goodsId,
           goodsDetail.goodInfo.goodsName,
           1,
           goodsDetail.goodInfo.presentPrice,
-          goodsDetail.goodInfo.image1
+          goodsDetail.goodInfo.image1,
+          true
         );
       },
       child: Container(
