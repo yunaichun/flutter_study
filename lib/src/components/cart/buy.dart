@@ -23,8 +23,8 @@ class CartBuyWidget extends StatelessWidget {
           child: Row(
             children: <Widget>[
               _selectAllBtn(context),
-              _totalPrice(context),
-              _bugBtn(context)
+              _totalPrice(context, val.totalPrice),
+              _bugBtn(context, val.totalGoodsCount)
             ],
           ),
         );
@@ -52,7 +52,7 @@ class CartBuyWidget extends StatelessWidget {
   }
 
   // 合计区域
-  Widget _totalPrice(BuildContext context) {
+  Widget _totalPrice(BuildContext context, double totalPrice) {
     return Container(
       width: ScreenUtil().setWidth(430),
       alignment: Alignment.centerRight,
@@ -76,7 +76,7 @@ class CartBuyWidget extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 width: ScreenUtil().setWidth(150),
                 child: Text(
-                  '￥1922',
+                  '￥$totalPrice',
                   style: TextStyle(
                     fontSize: ScreenUtil().setSp(36),
                     color: Colors.red,
@@ -103,7 +103,7 @@ class CartBuyWidget extends StatelessWidget {
   }
 
   // 结算按钮
-  Widget _bugBtn(BuildContext context) {
+  Widget _bugBtn(BuildContext context, int totalGoodsCount) {
     return Container(
       width: ScreenUtil().setWidth(160),
       padding: EdgeInsets.only(left: 10),
@@ -117,7 +117,7 @@ class CartBuyWidget extends StatelessWidget {
              borderRadius: BorderRadius.circular(3.0)
           ),
           child: Text(
-            '结算(6)',
+            '结算($totalGoodsCount)',
             style: TextStyle(
               color: Colors.white
             ),

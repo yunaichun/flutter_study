@@ -11,8 +11,10 @@ import 'dart:convert';
 
 class CartProvider with ChangeNotifier{
   List<CartItem> cartList = [];
+  double totalPrice = 0;
+  int totalGoodsCount = 0;
 
-  // 查询全部商品【优先从持久化数据中获取，否则从 Provider 中获取】
+  // 初始化所有数据【优先从持久化数据中获取，否则从 Provider 中获取】
   getGoodsList() async {
     // 一、获取持久化存储的值
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -31,6 +33,14 @@ class CartProvider with ChangeNotifier{
            navigatorData.map((item) => _gridViewItem(context, item)).toList()
       */
       cartList = (json.decode(cartString.toString()) as List).map((i) => CartItem.fromJson(i)).toList();
+      totalPrice = 0;
+      totalGoodsCount = 0;
+      cartList.forEach((item) {
+        if(item.isCheck){
+          totalPrice += (item.count*item.price);
+          totalGoodsCount += item.count;
+        }
+      });
     }
 
     notifyListeners();
@@ -88,6 +98,10 @@ class CartProvider with ChangeNotifier{
     cartString = json.encode(cartList).toString();
     prefs.setString('cartInfo', cartString);
 
+    // 四、重新计算总数
+    await getGoodsList();
+
+
     notifyListeners();
   }
 
@@ -104,6 +118,9 @@ class CartProvider with ChangeNotifier{
     // 三、保存到 SharedPreferences
     cartString = json.encode(cartList).toString();
     prefs.setString('cartInfo', cartString);
+
+    // 四、重新计算总数
+    await getGoodsList();
 
     notifyListeners();
   }
