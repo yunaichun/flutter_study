@@ -7,6 +7,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provide/provide.dart';
 import 'package:flutter_study/src/provide/cart.dart';
 
+/* 静态化路由 */
+import '../../routers/application.dart';
+
 /* 数据格式 */
 import 'package:flutter_study/src/types/cart.type.dart';
 
@@ -76,13 +79,18 @@ class CartListWidget extends StatelessWidget {
 
   // 商品图片 
   Widget _cartImage(BuildContext context, CartItem item){
-    return Container(
-      width: ScreenUtil().setWidth(150),
-      padding: EdgeInsets.all(3.0),
-      decoration: BoxDecoration(
-        border: Border.all(width: 1, color: Colors.black12)
+    return InkWell(
+      onTap: () {
+        Application.router.navigateTo(context, '/detail?id=${item.goodsId}');
+      },
+      child: Container(
+        width: ScreenUtil().setWidth(150),
+        padding: EdgeInsets.all(3.0),
+        decoration: BoxDecoration(
+          border: Border.all(width: 1, color: Colors.black12)
+        ),
+        child: Image.network(item.images),
       ),
-      child: Image.network(item.images),
     );
   }
 

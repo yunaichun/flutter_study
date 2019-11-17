@@ -33,7 +33,7 @@ class BottomWidget extends StatelessWidget {
                 ],
               ),
               _addCartBtn(context, val.goodsDetail),
-              _buyBtn(context)
+              _buyBtn(context, val.goodsDetail)
             ],
           ),
         );
@@ -121,10 +121,22 @@ class BottomWidget extends StatelessWidget {
   }
 
   // 立即购买
-  Widget _buyBtn(context) {
+  Widget _buyBtn(context, GoodsDetailData goodsDetail) {
     return InkWell(
       onTap: () async {
-        await Provide.value<CartProvider>(context).remove();
+        await Provide.value<CartProvider>(context)
+        .saveGoods(
+          goodsId: goodsDetail.goodInfo.goodsId,
+          goodsName: goodsDetail.goodInfo.goodsName,
+          count: 1,
+          price: goodsDetail.goodInfo.presentPrice,
+          images: goodsDetail.goodInfo.image1,
+          isCheck: true
+        );
+        /* 暂时用跳转到购物车页面的逻辑 */
+        Application.router.navigateTo(context, '/');
+        Provide.value<BottomIndexProvide>(context).changeIndex(2);
+        // await Provide.value<CartProvider>(context).remove();
       },
       child: Container(
         alignment: Alignment.center,
