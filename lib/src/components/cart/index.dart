@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:provide/provide.dart';
 import 'package:flutter_study/src/provide/cart.dart';
 
-/* 商品列表项 */
+/* 购物车商品列表 */
 import './list.dart';
+/* 购物车立即购买 */
+import './buy.dart';
 
 class Cart extends StatelessWidget {
 
@@ -19,8 +21,15 @@ class Cart extends StatelessWidget {
         future: _getCartInfo(context),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Container(
-              child: CartList(),
+            return Stack(
+              children: <Widget>[
+                CartListWidget(),
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  child: CartBuyWidget(),
+                )
+              ],
             );
           } else {
             return Text('正在加载');

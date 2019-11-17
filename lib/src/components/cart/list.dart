@@ -10,7 +10,7 @@ import 'package:flutter_study/src/provide/cart.dart';
 /* 数据格式 */
 import 'package:flutter_study/src/types/cart.type.dart';
 
-class CartList extends StatelessWidget {
+class CartListWidget extends StatelessWidget {
 
   Widget build(BuildContext context) {
     // 路由切换了，这里必须要再次初始化一次
@@ -18,12 +18,15 @@ class CartList extends StatelessWidget {
 
     return Provide<CartProvider>(
       builder: (context, child, val) {
-        return ListView.builder(
-          shrinkWrap: true,
-          itemCount: val.cartList.length,
-          itemBuilder: (context, index) {
-            return _cartItem(context, val.cartList[index]);
-          }
+        return  Container(
+          margin: EdgeInsets.only(bottom: 50.0),
+            child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: val.cartList.length,
+            itemBuilder: (context, index) {
+              return _cartItem(context, val.cartList[index]);
+            }
+          )
         );
       },
     );
