@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:provide/provide.dart';
 import 'package:flutter_study/src/provide/cart.dart';
 
+/* 商品列表项 */
+import './list.dart';
+
 class Cart extends StatelessWidget {
 
   @override
@@ -15,15 +18,9 @@ class Cart extends StatelessWidget {
       body: FutureBuilder(
         future: _getCartInfo(context),
         builder: (context, snapshot) {
-          List cartList = Provide.value<CartProvider>(context).cartList;
           if (snapshot.hasData) {
-            return ListView.builder(
-              itemCount: cartList.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(cartList[index].goodsName)
-                );
-              }
+            return Container(
+              child: CartList(),
             );
           } else {
             return Text('正在加载');

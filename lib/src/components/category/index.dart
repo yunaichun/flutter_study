@@ -6,7 +6,9 @@ import 'package:flutter_study/src/provide/category.dart';
 
 /* 左侧一级导航 */
 import './leftnav.dart';
+/* 右侧二级导航 */
 import './rightnav.dart';
+/* 商品列表 */
 import './goods_list.dart';
 
 class Category extends StatelessWidget {
