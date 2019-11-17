@@ -67,12 +67,12 @@ class BottomWidget extends StatelessWidget {
       onTap: () async {
         await Provide.value<CartProvider>(context)
         .saveGoods(
-          goodsDetail.goodInfo.goodsId,
-          goodsDetail.goodInfo.goodsName,
-          1,
-          goodsDetail.goodInfo.presentPrice,
-          goodsDetail.goodInfo.image1,
-          true
+          goodsId: goodsDetail.goodInfo.goodsId,
+          goodsName: goodsDetail.goodInfo.goodsName,
+          count: 1,
+          price: goodsDetail.goodInfo.presentPrice,
+          images: goodsDetail.goodInfo.image1,
+          isCheck: true
         );
       },
       child: Container(

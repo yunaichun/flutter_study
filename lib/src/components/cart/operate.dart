@@ -11,6 +11,8 @@ import 'package:flutter_study/src/provide/cart.dart';
 import 'package:flutter_study/src/types/cart.type.dart';
 
 class CartOperateWidget extends StatelessWidget {
+  final CartItem item;
+  CartOperateWidget(this.item);
 
   @override
   Widget build(BuildContext context) {
@@ -41,25 +43,30 @@ class CartOperateWidget extends StatelessWidget {
       height: ScreenUtil().setHeight(45),
       alignment: Alignment.center,
       color: Colors.white,
-       child: Text('1'),
+       child: Text('${item.count}'),
     );
   }
 
   // 减少按钮
   Widget _reduceBtn(BuildContext context) {
     return InkWell(
-      onTap: (){},
+      onTap: () async{
+         await Provide.value<CartProvider>(context)
+        .saveGoods(goodsId: item.goodsId, type: 'delete');
+      },
       child: Container(
         width: ScreenUtil().setWidth(45),
         height: ScreenUtil().setHeight(45),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: Colors.white,
+          // 数量为 1 就不能再减少了
+          color: item.count > 1 ? Colors.white : Colors.black12,
           border: Border(
             right: BorderSide(width: 1, color: Colors.black12)
           )
         ),
-        child: Text('-'),
+        // 数量为 1 就不能再减少了
+        child: item.count > 1 ? Text('-') : Text(' '),
       ),
     );
   }
@@ -67,7 +74,10 @@ class CartOperateWidget extends StatelessWidget {
   // 添加按钮
   Widget _addBtn(BuildContext context){
     return InkWell(
-      onTap: (){},
+      onTap: () async {
+        await Provide.value<CartProvider>(context)
+        .saveGoods(goodsId: item.goodsId);
+      },
       child: Container(
         width: ScreenUtil().setWidth(45),
         height: ScreenUtil().setHeight(45),

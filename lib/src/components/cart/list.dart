@@ -22,12 +22,12 @@ class CartListWidget extends StatelessWidget {
     return Provide<CartProvider>(
       builder: (context, child, val) {
         return  Container(
-            // 解决 stack 布局的小 bug 没有商品的时候 购买按钮 会在顶部
-            height: ScreenUtil().setHeight(2000),
-            margin: EdgeInsets.only(bottom: 50.0),
-            child: ListView.builder(
-            shrinkWrap: true,
-            itemCount: val.cartList.length,
+          // 解决 stack 布局的小 bug 没有商品的时候 购买按钮 会在顶部
+          height: ScreenUtil().setHeight(2000),
+          margin: EdgeInsets.only(bottom: 50.0),
+          child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: val.cartList.length,
             itemBuilder: (context, index) {
               return _cartItem(context, val.cartList[index]);
             }
@@ -101,14 +101,14 @@ class CartListWidget extends StatelessWidget {
           ),
           Container(
             alignment: Alignment.center,
-            child: CartOperateWidget(),
+            child: CartOperateWidget(item),
           )
         ],
       ),
     );
   }
 
-  // 商品价格和删除商品
+  // 商品价格、删除商品
   Widget _cartPriceAndDelete(BuildContext context, CartItem item){
     return Container(
       width: ScreenUtil().setWidth(120),

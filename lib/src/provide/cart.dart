@@ -50,8 +50,8 @@ class CartProvider with ChangeNotifier{
     notifyListeners();
   }
 
-  // 添加商品
-  saveGoods(goodsId, goodsName, count, price, images, isCheck) async {
+  // 保存商品【添加/修改商品数量】
+  saveGoods({goodsId, goodsName, count, price, images, isCheck, type}) async {
     // 一、获取持久化存储的值
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String cartString = prefs.getString('cartInfo');
@@ -81,7 +81,11 @@ class CartProvider with ChangeNotifier{
       );
       cartList.add(newGoods);
     } else {
-      cartList[index].count += 1;
+      if (type == null) {
+        cartList[index].count += 1;
+      } else if (cartList[index].count > 1) {
+        cartList[index].count -= 1;
+      }
     }
 
     // 三、保存到 SharedPreferences
@@ -115,7 +119,7 @@ class CartProvider with ChangeNotifier{
     notifyListeners();
   }
 
-  // 商品选择
+  // 商品单选
   changeGoodsChecked(String goodsId) async{
     // 一、获取持久化存储的值
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -135,7 +139,7 @@ class CartProvider with ChangeNotifier{
     notifyListeners();
   }
 
-  // 商品选择
+  // 商品全选
   changeAllGoodsChecked(bool checked) async{
     // 一、获取持久化存储的值
     SharedPreferences prefs = await SharedPreferences.getInstance();
