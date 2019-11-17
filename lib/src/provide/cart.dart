@@ -13,6 +13,7 @@ class CartProvider with ChangeNotifier{
   List<CartItem> cartList = [];
   double totalPrice = 0;
   int totalGoodsCount = 0;
+  bool isAllChecked = true;
 
   // 初始化所有数据【优先从持久化数据中获取，否则从 Provider 中获取】
   getGoodsList() async {
@@ -35,10 +36,13 @@ class CartProvider with ChangeNotifier{
       cartList = (json.decode(cartString.toString()) as List).map((i) => CartItem.fromJson(i)).toList();
       totalPrice = 0;
       totalGoodsCount = 0;
+      isAllChecked = true;
       cartList.forEach((item) {
         if(item.isCheck){
           totalPrice += (item.count*item.price);
           totalGoodsCount += item.count;
+        } else {
+          isAllChecked = false;
         }
       });
     }
@@ -46,28 +50,14 @@ class CartProvider with ChangeNotifier{
     notifyListeners();
   }
 
-  // 根据商品 id 获取商品的 index
-  int getGoodsIndex(String goodsId) {
-    int res = -1;
-    int index = 0;
-    cartList.forEach((item) {
-      if (item.goodsId == goodsId) {
-        cartList[index].count = item.count + 1;
-        res = index;
-      }
-      index++;
-    });
-    return res;
-  }
-
-  // 保存商品【添加/修改】
+  // 添加商品
   saveGoods(goodsId, goodsName, count, price, images, isCheck) async {
     // 一、获取持久化存储的值
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String cartString = prefs.getString('cartInfo');
+    int index = getGoodsIndex(goodsId);
 
     // 二、保存到 Provide
-    int index = getGoodsIndex(goodsId);
     if (index == -1) {
       /* 第一种写法；这种写法需要在 types 文件中写 toJson 方法 */
       // Map<String, dynamic> newGoods = {
@@ -123,6 +113,62 @@ class CartProvider with ChangeNotifier{
     await getGoodsList();
 
     notifyListeners();
+  }
+
+  // 商品选择
+  changeGoodsChecked(String goodsId) async{
+    // 一、获取持久化存储的值
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String cartString = prefs.getString('cartInfo');
+    int index = getGoodsIndex(goodsId);
+
+    // 二、保存到 Provide
+    cartList[index].isCheck = !cartList[index].isCheck;
+
+    // 三、保存到 SharedPreferences
+    cartString = json.encode(cartList).toString();
+    prefs.setString('cartInfo', cartString);
+
+    // 四、重新计算总数
+    getGoodsList();
+
+    notifyListeners();
+  }
+
+  // 商品选择
+  changeAllGoodsChecked(bool checked) async{
+    // 一、获取持久化存储的值
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String cartString = prefs.getString('cartInfo');
+
+    // 二、保存到 Provide
+    var index = 0;
+    cartList.forEach((item) {
+      cartList[index].isCheck = checked;
+      index++;
+    });
+
+    // 三、保存到 SharedPreferences
+    cartString = json.encode(cartList).toString();
+    prefs.setString('cartInfo', cartString);
+
+    // 四、重新计算总数
+    getGoodsList();
+
+    notifyListeners();
+  }
+
+  // 根据商品 id 获取商品的 index
+  int getGoodsIndex(String goodsId) {
+    int res = -1;
+    int index = 0;
+    cartList.forEach((item) {
+      if (item.goodsId == goodsId) {
+        res = index;
+      }
+      index++;
+    });
+    return res;
   }
 
   // 清空持久化数据

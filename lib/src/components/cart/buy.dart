@@ -22,7 +22,7 @@ class CartBuyWidget extends StatelessWidget {
           width: ScreenUtil().setWidth(750),
           child: Row(
             children: <Widget>[
-              _selectAllBtn(context),
+              _selectAllBtn(context, val.isAllChecked),
               _totalPrice(context, val.totalPrice),
               _bugBtn(context, val.totalGoodsCount)
             ],
@@ -33,16 +33,18 @@ class CartBuyWidget extends StatelessWidget {
   }
 
   // 全选按钮
-  Widget _selectAllBtn(BuildContext context) {
+  Widget _selectAllBtn(BuildContext context, bool isAllChecked) {
     return Container(
       child: Row(
         children: <Widget>[
           Container(
             margin: EdgeInsets.only(left: 5.0),
             child: Checkbox(
-              value: true,
+              value: isAllChecked,
               activeColor: Colors.pink,
-              onChanged: (bool val){},
+              onChanged: (bool val) {
+                Provide.value<CartProvider>(context).changeAllGoodsChecked(val);
+              },
             ),
           ),
           Text('全选')
@@ -63,7 +65,7 @@ class CartBuyWidget extends StatelessWidget {
               // 合计 title
               Container(
                 alignment: Alignment.centerRight,
-                width: ScreenUtil().setWidth(280),
+                width: ScreenUtil().setWidth(200),
                 child: Text(
                   '合计:',
                   style: TextStyle(
@@ -74,9 +76,9 @@ class CartBuyWidget extends StatelessWidget {
               // 合计 价格
               Container(
                 alignment: Alignment.centerLeft,
-                width: ScreenUtil().setWidth(150),
+                width: ScreenUtil().setWidth(230),
                 child: Text(
-                  '￥$totalPrice',
+                  '￥${totalPrice.toStringAsFixed(2)}',
                   style: TextStyle(
                     fontSize: ScreenUtil().setSp(36),
                     color: Colors.red,
