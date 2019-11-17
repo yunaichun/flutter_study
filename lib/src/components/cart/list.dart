@@ -10,6 +10,9 @@ import 'package:flutter_study/src/provide/cart.dart';
 /* 数据格式 */
 import 'package:flutter_study/src/types/cart.type.dart';
 
+/* 商品加减组件 */
+import './operate.dart';
+
 class CartListWidget extends StatelessWidget {
 
   Widget build(BuildContext context) {
@@ -19,7 +22,9 @@ class CartListWidget extends StatelessWidget {
     return Provide<CartProvider>(
       builder: (context, child, val) {
         return  Container(
-          margin: EdgeInsets.only(bottom: 50.0),
+            // 解决 stack 布局的小 bug 没有商品的时候 购买按钮 会在顶部
+            height: ScreenUtil().setHeight(2000),
+            margin: EdgeInsets.only(bottom: 50.0),
             child: ListView.builder(
             shrinkWrap: true,
             itemCount: val.cartList.length,
@@ -82,12 +87,20 @@ class CartListWidget extends StatelessWidget {
   // 商品名称
   Widget _cartGoodsName(BuildContext context, CartItem item){
     return Container(
-      width: ScreenUtil().setWidth(300),
+      width: ScreenUtil().setWidth(330),
       padding: EdgeInsets.all(10),
       alignment: Alignment.topLeft,
       child: Column(
         children: <Widget>[
-          Text(item.goodsName)
+          Container(
+            width: ScreenUtil().setWidth(330),
+            alignment: Alignment.centerLeft,
+            child: Text(item.goodsName),
+          ),
+          Container(
+            alignment: Alignment.center,
+            child: CartOperateWidget(),
+          )
         ],
       ),
     );
@@ -96,7 +109,7 @@ class CartListWidget extends StatelessWidget {
   // 商品价格
   Widget _cartPrice(BuildContext context, CartItem item){
     return Container(
-      width: ScreenUtil().setWidth(150),
+      width: ScreenUtil().setWidth(120),
       alignment: Alignment.centerRight,
       child: Column(
         children: <Widget>[
