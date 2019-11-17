@@ -26,7 +26,12 @@ class BottomWidget extends StatelessWidget {
           color: Colors.white,
           child: Row(
             children: <Widget>[
-              _shopIcon(context),
+              Stack(
+                children: <Widget>[
+                  _shopIcon(context),
+                  _shopTotalCount(context)
+                ],
+              ),
               _addCartBtn(context, val.goodsDetail),
               _buyBtn(context)
             ],
@@ -58,6 +63,33 @@ class BottomWidget extends StatelessWidget {
           color: Colors.red,
         ), 
       ) ,
+    );
+  }
+
+  // 购物车总数
+  Widget _shopTotalCount(context) {
+    return Provide<CartProvider>(
+      builder: (context, child, val){
+        return  Positioned(
+          top: 0,
+          right: 10,
+          child: Container(
+            padding: EdgeInsets.fromLTRB(6, 3, 6, 3),
+            decoration: BoxDecoration(
+              color: Colors.pink,
+              border: Border.all(width: 2, color: Colors.white),
+              borderRadius: BorderRadius.circular(12.0)
+            ),
+            child: Text(
+              '${val.totalGoodsCount}',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: ScreenUtil().setSp(22)
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 
