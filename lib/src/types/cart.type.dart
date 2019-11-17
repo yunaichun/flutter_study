@@ -4,6 +4,7 @@ class CartItem {
   int count;
   double price;
   String images;
+  bool isCheck;
 
   CartItem({
     this.goodsId,
@@ -11,6 +12,7 @@ class CartItem {
     this.count,
     this.price,
     this.images,
+    this.isCheck
   });
 
   factory CartItem.fromJson(Map<String, dynamic> parsedJson){
@@ -19,7 +21,8 @@ class CartItem {
       goodsName: parsedJson['goodsName'],
       count: parsedJson['count'],
       price: parsedJson['price'],
-      images: parsedJson['images']
+      images: parsedJson['images'],
+      isCheck: parsedJson['isCheck']
     );
   }
 
@@ -39,6 +42,7 @@ class CartItem {
     data['count'] = this.count;
     data['price'] = this.price;
     data['images'] = this.images;
+    data['isCheck'] = this.isCheck;
     return data;
   }
 }

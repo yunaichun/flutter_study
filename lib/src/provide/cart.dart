@@ -74,6 +74,7 @@ class CartProvider with ChangeNotifier{
       //   "count": count,
       //   "price": price,
       //   "images": images
+      //   "isCheck": true
       // };
       // cartList.add(new CartItem.fromJson(newGoods));
 
@@ -83,7 +84,8 @@ class CartProvider with ChangeNotifier{
         goodsName: goodsName,
         count: count,
         price: price,
-        images: images
+        images: images,
+        isCheck: true
       );
       cartList.add(newGoods);
     }

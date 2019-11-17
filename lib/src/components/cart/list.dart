@@ -65,7 +65,7 @@ class CartListWidget extends StatelessWidget {
   Widget _cartCheckBtn(BuildContext context, CartItem item){
     return Container(
       child: Checkbox(
-        value: true,
+        value: item.isCheck,
         activeColor: Colors.pink,
         onChanged: (bool val){},
       ),
