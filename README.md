@@ -16,20 +16,21 @@
 ### 项目结构
 
 ```
-|-- main.dart           入口文件
-|-- demo                学习demo
-|-- src                 实践项目
-    |-- bottom.dart     
-    |-- index.dart         
-    |-- components      页面组件
-    |   |-- cart        购物车模块   
-    |   |-- category    商品分类模块   
-    |   |-- detail      商品详情模块 
-    |   |-- home        首页模块 
-    |   |-- member      个人中心模块
-    |-- config          后台接口
-    |-- provide         状态管理
-    |-- routers         路由管理
-    |-- service         http请求
-    |-- types           model数据层
+|-- main.dart               入口文件
+|-- lib                     
+    |-- demo                学习demo
+    |-- src                 实践项目
+        |-- bottom.dart     
+        |-- index.dart         
+        |-- components      页面组件
+        |   |-- cart        购物车模块   
+        |   |-- category    商品分类模块   
+        |   |-- detail      商品详情模块 
+        |   |-- home        首页模块 
+        |   |-- member      个人中心模块
+        |-- config          后台接口
+        |-- provide         状态管理
+        |-- routers         路由管理
+        |-- service         http请求
+        |-- types           model数据层
 ```
