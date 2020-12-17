@@ -28,7 +28,7 @@
 
 ## 学习笔记
 
-- Flutter: https://www.answera.top/hybird/flutter/
+- Flutter: https://www.answera.top/hybird/flutter
 
 ## 参考资料
 
