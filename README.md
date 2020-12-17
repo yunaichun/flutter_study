@@ -4,7 +4,7 @@
 
 可参考学习笔记: https://www.answera.top/hybird/flutter/
 
-## 项目结构
+## 目录结构
 
 ```
 |-- main.dart               入口文件
