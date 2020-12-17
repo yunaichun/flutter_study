@@ -1,10 +1,10 @@
-### 简介
+## 简介
 
 此项目是学习 Flutter 的项目，记录学习的点滴，方便以后忘记可以从学习轨迹中迅速上手。
 
 可参考学习笔记: https://www.answera.top/hybird/flutter/
 
-### 项目结构
+## 项目结构
 
 ```
 |-- main.dart               入口文件
@@ -26,7 +26,7 @@
         |-- types           model数据层
 ```
 
-## 参考地址
+## 参考资料
 
 - [CocoaPods安装遇到的问题](https://www.meiwen.com.cn/subject/hmjopttx.html)
 - [Flutter 官网](https://flutter.dev/docs/get-started/install)
